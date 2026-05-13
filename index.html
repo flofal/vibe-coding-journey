@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1A385E" />
+
+  <title data-i18n="meta.title">Vibe Coding · Recorrido autodidacta · Florencia Falco</title>
+  <meta name="description" data-i18n="meta.description" content="Bitácora pública del recorrido autodidacta de Florencia Falco por el sílabos público de Vibe Coding (T564A), HGSE, Karen Brennan, Fall 2025." />
+  <meta name="author" content="Florencia Falco" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Vibe Coding · Recorrido autodidacta" />
+  <meta property="og:description" content="Bitácora pública del recorrido autodidacta de Florencia Falco por el sílabos T564A (HGSE)." />
+  <meta property="og:image" content="assets/og-image.svg" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vibe Coding · Recorrido autodidacta" />
+  <meta name="twitter:description" content="Bitácora pública del recorrido autodidacta de Florencia Falco por el sílabos T564A (HGSE)." />
+  <meta name="twitter:image" content="assets/og-image.svg" />
+
+  <!-- Fonts: Raleway desde Google, DK Rotorua local -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido" data-i18n="a11y.skip">Saltar al contenido</a>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="Florencia Falco — Vibe Coding">
+        <img class="brand-logo" src="assets/logos/logo-ff.png" alt="Logo de Florencia Falco" />
+        <div class="brand-text">
+          <h1 class="brand-title" data-i18n="header.title">Vibe Coding</h1>
+          <p class="brand-subtitle" data-i18n="header.subtitle">Recorrido autodidacta</p>
+        </div>
+      </a>
+
+      <div class="header-meta">
+        <p class="header-context" data-i18n="header.context">
+          Siguiendo el sílabos público de T564A · HGSE · Karen Brennan
+        </p>
+
+        <div class="header-actions">
+          <div class="progress-badge" role="status" aria-live="polite">
+            <span class="progress-dot" aria-hidden="true"></span>
+            <span class="progress-text" id="progress-text">0 de 6 semanas completadas</span>
+          </div>
+
+          <div class="lang-toggle" role="group" aria-label="Idioma">
+            <button type="button" class="lang-btn is-active" data-lang-set="es" aria-pressed="true">ES</button>
+            <span class="lang-sep" aria-hidden="true">|</span>
+            <button type="button" class="lang-btn" data-lang-set="en" aria-pressed="false">EN</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="about" aria-labelledby="about-heading">
+      <div class="container">
+        <h2 id="about-heading" data-i18n="about.heading">Sobre este proyecto</h2>
+        <p data-i18n-html="about.p1"></p>
+        <p data-i18n-html="about.p2"></p>
+
+        <ul class="about-links">
+          <li>
+            <a id="link-syllabus" href="#" target="_blank" rel="noopener noreferrer">
+              <span aria-hidden="true">📄</span>
+              <span data-i18n="about.link.syllabus">Sílabos original (PDF)</span>
+            </a>
+          </li>
+          <li>
+            <a id="link-gazette" href="#" target="_blank" rel="noopener noreferrer">
+              <span aria-hidden="true">📰</span>
+              <span data-i18n="about.link.gazette">Artículo del Harvard Gazette</span>
+            </a>
+          </li>
+          <li>
+            <a id="link-linkedin" href="#" target="_blank" rel="noopener noreferrer">
+              <span aria-hidden="true">🔗</span>
+              <span data-i18n="about.link.linkedin">LinkedIn de Flo</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="weeks" aria-labelledby="weeks-heading">
+      <div class="container">
+        <h2 id="weeks-heading" data-i18n="weeks.heading">Las 6 semanas</h2>
+        <ol class="week-list" id="week-list">
+          <!-- Tarjetas renderizadas por script.js desde data.json -->
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <p class="footer-credit" data-i18n="footer.credit">
+        Sílabos original: Karen Brennan &amp; Jacob Wolf · HGSE Fall 2025
+      </p>
+      <p class="footer-author">
+        <span data-i18n="footer.author">Diseño y desarrollo: Florencia Falco</span>
+        · <span id="footer-year">2026</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="translations.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

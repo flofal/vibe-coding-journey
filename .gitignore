@@ -1,0 +1,22 @@
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local environment
+.env
+.env.local
+
+# OS-generated junk
+.Trashes
+.AppleDouble
+.LSOverride
+
+# Brand source assets (solo en local, no se publican).
+# El sitio usa copias en /assets/.
+/marca/
