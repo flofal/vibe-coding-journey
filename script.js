@@ -4,6 +4,7 @@
    - Renderiza tarjetas (Semana 0 + Semanas 1–6)
    - Toggle ES/EN con persistencia en localStorage
    - Expandir/colapsar tarjetas (click + teclado)
+   - Navbar: menú móvil + scroll spy
    ========================================================= */
 
 (function () {
@@ -23,9 +24,7 @@
   function t(key, vars) {
     const dict = window.VC_TRANSLATIONS[state.lang] || {};
     let value = dict[key];
-    if (value === undefined) {
-      value = (window.VC_TRANSLATIONS.es || {})[key];
-    }
+    if (value === undefined) value = (window.VC_TRANSLATIONS.es || {})[key];
     if (value === undefined) return key;
     if (vars && typeof value === "string") {
       Object.keys(vars).forEach(function (k) {
@@ -61,7 +60,7 @@
     try {
       const saved = localStorage.getItem(STORAGE_LANG);
       if (saved && SUPPORTED_LANGS.indexOf(saved) !== -1) return saved;
-    } catch (_) { /* localStorage puede no estar disponible */ }
+    } catch (_) {}
     return DEFAULT_LANG;
   }
 
@@ -69,7 +68,7 @@
     try { localStorage.setItem(STORAGE_LANG, lang); } catch (_) {}
   }
 
-  // ---------- Render: textos fijos ----------
+  // ---------- Strings fijas ----------
 
   function applyTranslations() {
     document.documentElement.lang = t("html.lang");
@@ -80,15 +79,12 @@
     if (metaDesc) metaDesc.setAttribute("content", t("meta.description"));
 
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
-      const key = el.getAttribute("data-i18n");
-      el.textContent = t(key);
+      el.textContent = t(el.getAttribute("data-i18n"));
     });
     document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
-      const key = el.getAttribute("data-i18n-html");
-      el.innerHTML = t(key);
+      el.innerHTML = t(el.getAttribute("data-i18n-html"));
     });
 
-    // Botones de idioma
     document.querySelectorAll(".lang-btn").forEach(function (btn) {
       const target = btn.getAttribute("data-lang-set");
       const isActive = target === state.lang;
@@ -96,12 +92,14 @@
       btn.setAttribute("aria-pressed", isActive ? "true" : "false");
     });
 
-    // aria-label del toggle
     const langGroup = document.querySelector(".lang-toggle");
-    if (langGroup) langGroup.setAttribute("aria-label", t("header.langToggle.aria"));
+    if (langGroup) langGroup.setAttribute("aria-label", t("nav.lang.aria"));
+
+    const navToggle = document.getElementById("nav-toggle");
+    if (navToggle) navToggle.setAttribute("aria-label", t("nav.toggle.aria"));
   }
 
-  // ---------- Render: tarjetas semanales ----------
+  // ---------- Tarjetas semanales ----------
 
   function renderWeeks() {
     const list = document.getElementById("week-list");
@@ -173,7 +171,6 @@
   function renderWeekDetails(w) {
     const sections = [];
 
-    // Descripción
     const desc = (w.description && w.description[state.lang]) || (w.description && w.description.es) || "";
     if (desc) {
       sections.push(`
@@ -184,7 +181,6 @@
       `);
     }
 
-    // Lecturas
     if (w.readings && w.readings.length) {
       const items = w.readings.map(function (r) {
         const cite =
@@ -211,7 +207,6 @@
       `);
     }
 
-    // Herramienta
     const toolHtml = w.tool && w.tool.trim()
       ? `<span class="tool-badge">${escapeHtml(w.tool)}</span>`
       : `<span class="tool-empty">${escapeHtml(t("card.tool.empty"))}</span>`;
@@ -222,7 +217,6 @@
       </div>
     `);
 
-    // Proyecto
     const proj = w.project || {};
     const projParts = [];
     if (proj.url) {
@@ -246,7 +240,6 @@
       </div>
     `);
 
-    // Reflexión
     const reflectionRaw = (w.reflection || "").trim();
     let reflectionHtml = "";
     if (!reflectionRaw) {
@@ -256,7 +249,6 @@
         return `<p>${escapeHtml(p.trim()).replace(/\n/g, "<br>")}</p>`;
       }).join("");
       reflectionHtml = paragraphs;
-      // Si idioma actual es EN y la reflexión es solo en español (caso por defecto), avisar.
       if (state.lang === "en") {
         reflectionHtml += `<p class="reflection-fallback-notice">${escapeHtml(t("card.reflection.fallbackNotice"))}</p>`;
       }
@@ -268,7 +260,6 @@
       </div>
     `);
 
-    // LinkedIn
     if (w.linkedinUrl) {
       sections.push(`
         <div class="week-section">
@@ -302,14 +293,13 @@
     if (badge) badge.setAttribute("aria-label", t("progress.aria"));
   }
 
-  // ---------- Links externos del header ----------
+  // ---------- Links externos ----------
 
   function applyExternalLinks() {
     if (!state.data || !state.data.links) return;
     const map = {
       "link-syllabus": state.data.links.syllabusPdf,
-      "link-gazette": state.data.links.gazetteArticle,
-      "link-linkedin": state.data.links.linkedin
+      "link-gazette": state.data.links.gazetteArticle
     };
     Object.keys(map).forEach(function (id) {
       const a = document.getElementById(id);
@@ -317,17 +307,25 @@
       const url = map[id];
       if (url && url.trim()) {
         a.setAttribute("href", url);
-        a.style.removeProperty("display");
+        a.removeAttribute("aria-disabled");
       } else {
         a.setAttribute("href", "#");
         a.setAttribute("aria-disabled", "true");
         a.addEventListener("click", function (e) { e.preventDefault(); });
-        a.style.opacity = "0.55";
       }
     });
+
+    const emailLink = document.getElementById("contact-email");
+    if (emailLink && state.data.links.email) {
+      emailLink.setAttribute("href", "mailto:" + state.data.links.email);
+    }
+    const linkedinLink = document.getElementById("contact-linkedin");
+    if (linkedinLink && state.data.links.linkedin) {
+      linkedinLink.setAttribute("href", state.data.links.linkedin);
+    }
   }
 
-  // ---------- Toggle de idioma ----------
+  // ---------- Idioma ----------
 
   function bindLangToggle() {
     document.querySelectorAll(".lang-btn").forEach(function (btn) {
@@ -342,6 +340,59 @@
     });
   }
 
+  // ---------- Navbar: móvil + scroll spy ----------
+
+  function bindNav() {
+    const toggle = document.getElementById("nav-toggle");
+    const menu = document.getElementById("nav-menu");
+    if (toggle && menu) {
+      toggle.addEventListener("click", function () {
+        const open = menu.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      menu.querySelectorAll(".nav-link").forEach(function (link) {
+        link.addEventListener("click", function () {
+          if (menu.classList.contains("is-open")) {
+            menu.classList.remove("is-open");
+            toggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      });
+    }
+
+    // Scroll spy
+    const sections = ["dashboard", "sobre", "contacto"]
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
+
+    if (!sections.length || !("IntersectionObserver" in window)) return;
+
+    const linkMap = {};
+    document.querySelectorAll(".nav-link[href^='#']").forEach(function (a) {
+      const id = a.getAttribute("href").slice(1);
+      linkMap[id] = a;
+    });
+
+    const observer = new IntersectionObserver(function (entries) {
+      let topMost = null;
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          if (!topMost || entry.boundingClientRect.top < topMost.boundingClientRect.top) {
+            topMost = entry;
+          }
+        }
+      });
+      if (topMost) {
+        Object.keys(linkMap).forEach(function (id) {
+          linkMap[id].classList.toggle("is-active", id === topMost.target.id);
+        });
+      }
+    }, { rootMargin: "-30% 0px -55% 0px", threshold: 0 });
+
+    sections.forEach(function (s) { observer.observe(s); });
+  }
+
   // ---------- Footer year ----------
 
   function setFooterYear() {
@@ -349,7 +400,7 @@
     if (el) el.textContent = String(new Date().getFullYear());
   }
 
-  // ---------- Carga inicial ----------
+  // ---------- Init ----------
 
   function loadData() {
     return fetch("data.json", { cache: "no-cache" })
@@ -363,6 +414,7 @@
     state.lang = getInitialLang();
     setFooterYear();
     bindLangToggle();
+    bindNav();
     applyTranslations();
 
     loadData()
