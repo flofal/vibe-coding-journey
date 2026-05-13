@@ -1,10 +1,5 @@
 /* =========================================================
    Vibe Coding Dashboard — lógica
-   - Carga data.json
-   - Renderiza tarjetas (Semana 0 + Semanas 1–6)
-   - Toggle ES/EN con persistencia en localStorage
-   - Expandir/colapsar tarjetas (click + teclado)
-   - Navbar: menú móvil + scroll spy
    ========================================================= */
 
 (function () {
@@ -13,13 +8,11 @@
   const STORAGE_LANG = "vc.lang";
   const SUPPORTED_LANGS = ["es", "en"];
   const DEFAULT_LANG = "es";
+  const DAY_MS = 24 * 60 * 60 * 1000;
 
-  const state = {
-    lang: DEFAULT_LANG,
-    data: null
-  };
+  const state = { lang: DEFAULT_LANG, data: null };
 
-  // ---------- Utilidades ----------
+  /* ---------- Utilidades ---------- */
 
   function t(key, vars) {
     const dict = window.VC_TRANSLATIONS[state.lang] || {};
@@ -44,16 +37,37 @@
       .replace(/'/g, "&#039;");
   }
 
-  function formatDate(isoDate) {
-    if (!isoDate) return "";
-    const parts = isoDate.split("-");
-    if (parts.length !== 3) return isoDate;
-    const year = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10) - 1;
-    const day = parseInt(parts[2], 10);
+  function parseISODate(iso) {
+    if (!iso) return null;
+    const parts = iso.split("-");
+    if (parts.length !== 3) return null;
+    // Construyo como local 00:00 para evitar shift de timezone
+    return new Date(parseInt(parts[0],10), parseInt(parts[1],10) - 1, parseInt(parts[2],10));
+  }
+
+  function startOfDay(d) { const x = new Date(d); x.setHours(0,0,0,0); return x; }
+
+  function formatDateLong(isoDate) {
+    const d = parseISODate(isoDate);
+    if (!d) return "";
     const months = t("months.long");
-    const monthName = Array.isArray(months) ? months[month] : "";
-    return t("date.format", { day: day, month: monthName, year: year });
+    return t("date.format", {
+      day: d.getDate(),
+      month: Array.isArray(months) ? months[d.getMonth()] : "",
+      year: d.getFullYear()
+    });
+  }
+
+  function formatDateShort(isoDate) {
+    const d = parseISODate(isoDate);
+    if (!d) return "";
+    const months = t("months.short");
+    const days = t("weekdays.short");
+    return t("date.format.short", {
+      day: d.getDate(),
+      month: Array.isArray(months) ? months[d.getMonth()] : "",
+      weekday: Array.isArray(days) ? days[d.getDay()] : ""
+    });
   }
 
   function getInitialLang() {
@@ -63,12 +77,9 @@
     } catch (_) {}
     return DEFAULT_LANG;
   }
+  function saveLang(lang) { try { localStorage.setItem(STORAGE_LANG, lang); } catch (_) {} }
 
-  function saveLang(lang) {
-    try { localStorage.setItem(STORAGE_LANG, lang); } catch (_) {}
-  }
-
-  // ---------- Strings fijas ----------
+  /* ---------- Strings fijas ---------- */
 
   function applyTranslations() {
     document.documentElement.lang = t("html.lang");
@@ -94,12 +105,217 @@
 
     const langGroup = document.querySelector(".lang-toggle");
     if (langGroup) langGroup.setAttribute("aria-label", t("nav.lang.aria"));
-
     const navToggle = document.getElementById("nav-toggle");
     if (navToggle) navToggle.setAttribute("aria-label", t("nav.toggle.aria"));
   }
 
-  // ---------- Tarjetas semanales ----------
+  /* ---------- Hero card dinámico ---------- */
+
+  function pickFeaturedWeek(weeks, today) {
+    // Si hay alguna en in_progress, esa
+    const inProgress = weeks.find(function (w) { return w.status === "in_progress"; });
+    if (inProgress) return { state: "live", week: inProgress };
+
+    const todayMs = startOfDay(today).getTime();
+
+    // Si hoy cae dentro de la ventana [date, date+7) de alguna semana
+    for (let i = 0; i < weeks.length; i++) {
+      const w = weeks[i];
+      const d = parseISODate(w.date);
+      if (!d) continue;
+      const start = startOfDay(d).getTime();
+      const end = start + 7 * DAY_MS;
+      if (todayMs === start) return { state: "today", week: w };
+      if (todayMs > start && todayMs < end) return { state: "live", week: w };
+    }
+
+    // Próxima con fecha futura
+    const future = weeks
+      .filter(function (w) {
+        const d = parseISODate(w.date);
+        return d && startOfDay(d).getTime() > todayMs;
+      })
+      .sort(function (a, b) { return parseISODate(a.date) - parseISODate(b.date); });
+    if (future.length) return { state: "upcoming", week: future[0] };
+
+    return { state: "done", week: weeks[weeks.length - 1] };
+  }
+
+  function formatCountdown(targetISO, state_) {
+    const target = parseISODate(targetISO);
+    if (!target) return "";
+    const diff = startOfDay(target).getTime() - startOfDay(new Date()).getTime();
+    const days = Math.round(diff / DAY_MS);
+    if (state_ === "today" || days === 0) return t("hero.countdown.now");
+    if (days < 0) return "";
+    if (days === 1) return t("hero.countdown.daysOne", { n: 1 });
+    if (days <= 14) return t("hero.countdown.daysMany", { n: days });
+    const weeks = Math.round(days / 7);
+    return t("hero.countdown.weeks", { n: weeks });
+  }
+
+  function renderHeroCard() {
+    if (!state.data) return;
+    const featured = pickFeaturedWeek(state.data.weeks, new Date());
+    const w = featured.week;
+
+    const card = document.getElementById("hero-card");
+    const eyebrowEl = document.getElementById("hero-card-eyebrow");
+    const titleEl = document.getElementById("hero-card-title");
+    const topicEl = document.getElementById("hero-card-topic");
+    const weekEl = document.getElementById("hero-card-week");
+    const dateEl = document.getElementById("hero-card-date");
+    const dateText = dateEl ? dateEl.querySelector("span") : null;
+    const countdownEl = document.getElementById("hero-card-countdown");
+    const openBtn = document.getElementById("hero-card-open");
+
+    if (!card || !w) return;
+
+    let eyebrowKey;
+    switch (featured.state) {
+      case "today": eyebrowKey = "hero.eyebrow.today"; break;
+      case "live": eyebrowKey = "hero.eyebrow.live"; break;
+      case "done": eyebrowKey = "hero.eyebrow.done"; break;
+      default: eyebrowKey = "hero.eyebrow.upcoming";
+    }
+    if (eyebrowEl) eyebrowEl.textContent = t(eyebrowKey);
+
+    if (featured.state === "done") {
+      if (titleEl) titleEl.textContent = t("hero.heading.done");
+      if (topicEl) topicEl.textContent = t("hero.subtitle.done");
+      if (weekEl) weekEl.textContent = "";
+      if (dateText) dateText.textContent = "";
+      if (countdownEl) countdownEl.textContent = "";
+    } else {
+      if (weekEl) {
+        weekEl.textContent = w.isIntro
+          ? t("weeks.intro.tag")
+          : t("weeks.week") + " " + w.id;
+      }
+      if (titleEl) titleEl.textContent = w.title;
+      if (topicEl) {
+        const topic = (w.topic && w.topic[state.lang]) || (w.topic && w.topic.es) || "";
+        topicEl.textContent = topic;
+      }
+      if (dateText) dateText.textContent = formatDateLong(w.date);
+      if (countdownEl) countdownEl.textContent = formatCountdown(w.date, featured.state);
+    }
+
+    if (openBtn) {
+      openBtn.onclick = function () {
+        if (featured.state === "done") return;
+        focusWeek(w.id);
+      };
+    }
+  }
+
+  /* ---------- Card "Tu recorrido" ---------- */
+
+  function renderJourney() {
+    if (!state.data) return;
+    const weeks = state.data.weeks;
+    const realWeeks = weeks.filter(function (w) { return !w.isIntro; });
+    const completed = realWeeks.filter(function (w) { return w.status === "completed"; }).length;
+
+    // Semana actual (la primera no completada y no intro)
+    let current = realWeeks.findIndex(function (w) { return w.status !== "completed"; });
+    if (current === -1) current = realWeeks.length; // todo completo
+    else current = current + 1; // 1-indexed para mostrar
+
+    const pct = Math.round((completed / 6) * 100);
+
+    const titleEl = document.querySelector(".journey-title [data-i18n]");
+    if (titleEl) titleEl.textContent = t("journey.weekOf", { current: Math.max(1, Math.min(6, current)) });
+
+    const subEl = document.querySelector("#journey-sub [data-i18n]");
+    if (subEl) subEl.textContent = t("journey.completedOf", { done: completed });
+
+    const pctEl = document.getElementById("journey-percent");
+    if (pctEl) pctEl.textContent = pct + "%";
+
+    const bar = document.getElementById("journey-bar-fill");
+    if (bar) bar.style.width = pct + "%";
+    const wrap = bar ? bar.parentElement : null;
+    if (wrap) wrap.setAttribute("aria-valuenow", String(pct));
+
+    // Grid mini-cards: 7 (Sem 0 + 1..6)
+    const grid = document.getElementById("journey-grid");
+    if (!grid) return;
+    grid.innerHTML = "";
+    weeks.forEach(function (w) {
+      const status = w.isIntro ? "intro" : (w.status || "pending");
+      const tile = document.createElement("a");
+      tile.className = "journey-tile";
+      tile.href = "#week-summary-" + w.id;
+      tile.dataset.status = status;
+      tile.setAttribute("role", "listitem");
+
+      const numLabel = w.isIntro
+        ? t("weeks.intro.tag")
+        : (t("weeks.week").toUpperCase().slice(0, 1) + w.id);
+      const stateLabel = w.isIntro
+        ? t("journey.tile.intro")
+        : status === "completed" ? t("journey.tile.completed")
+        : status === "in_progress" ? t("journey.tile.current")
+        : t("journey.tile.pending");
+
+      tile.innerHTML = `
+        <span class="journey-tile-head">
+          <span class="journey-tile-num">${escapeHtml(numLabel)}</span>
+          <span class="journey-tile-icon" aria-hidden="true">${tileIcon(status)}</span>
+        </span>
+        <span class="journey-tile-label">${escapeHtml(stateLabel)}</span>
+      `;
+      tile.addEventListener("click", function (e) {
+        e.preventDefault();
+        focusWeek(w.id);
+      });
+      grid.appendChild(tile);
+    });
+  }
+
+  function tileIcon(status) {
+    if (status === "completed") {
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`;
+    }
+    if (status === "in_progress" || status === "intro") {
+      return `<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>`;
+    }
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`;
+  }
+
+  /* ---------- Sidebar cronograma ---------- */
+
+  function renderSchedule() {
+    if (!state.data) return;
+    const list = document.getElementById("schedule-list");
+    if (!list) return;
+    list.innerHTML = "";
+
+    state.data.weeks.forEach(function (w) {
+      const item = document.createElement("li");
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "schedule-item";
+      btn.dataset.status = w.isIntro ? "intro" : (w.status || "pending");
+
+      const title = w.isIntro
+        ? t("weeks.intro.tag")
+        : t("weeks.week") + " " + w.id;
+      const topic = (w.topic && w.topic[state.lang]) || (w.topic && w.topic.es) || "";
+
+      btn.innerHTML = `
+        <span class="schedule-item-date">${escapeHtml(formatDateShort(w.date))}</span>
+        <span class="schedule-item-title">${escapeHtml(title)}</span>
+        <span class="schedule-item-topic">${escapeHtml(topic)}</span>
+      `;
+      btn.addEventListener("click", function () { focusWeek(w.id); });
+      item.appendChild(btn);
+      list.appendChild(item);
+    });
+  }
+
+  /* ---------- Tarjetas expandibles ---------- */
 
   function renderWeeks() {
     const list = document.getElementById("week-list");
@@ -112,6 +328,7 @@
       li.dataset.status = w.status || "pending";
       li.dataset.open = "false";
       li.dataset.weekId = String(w.id);
+      li.id = "week-" + w.id;
 
       const summaryId = "week-summary-" + w.id;
       const detailsId = "week-details-" + w.id;
@@ -127,19 +344,14 @@
       const topic = (w.topic && w.topic[state.lang]) || (w.topic && w.topic.es) || "";
 
       li.innerHTML = `
-        <button
-          type="button"
-          class="week-summary"
-          id="${summaryId}"
-          aria-expanded="false"
-          aria-controls="${detailsId}"
-        >
+        <button type="button" class="week-summary" id="${summaryId}"
+                aria-expanded="false" aria-controls="${detailsId}">
           ${numberLabel}
           <span class="week-info">
             ${introTag}
             <span class="week-title">${escapeHtml(w.title)}</span>
             <span class="week-topic">${escapeHtml(topic)}</span>
-            <span class="week-date">${escapeHtml(t("weeks.published", { date: formatDate(w.date) }))}</span>
+            <span class="week-date">${escapeHtml(t("weeks.published", { date: formatDateLong(w.date) }))}</span>
           </span>
           <span class="week-meta">
             <span class="week-status">${escapeHtml(t("status." + (w.status || "pending")))}</span>
@@ -156,16 +368,11 @@
       const btn = li.querySelector(".week-summary");
       btn.addEventListener("click", function () { toggleCard(li); });
       btn.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggleCard(li);
-        }
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleCard(li); }
       });
 
       list.appendChild(li);
     });
-
-    updateProgress();
   }
 
   function renderWeekDetails(w) {
@@ -245,10 +452,9 @@
     if (!reflectionRaw) {
       reflectionHtml = `<p class="tool-empty">${escapeHtml(t("card.reflection.empty"))}</p>`;
     } else {
-      const paragraphs = reflectionRaw.split(/\n\s*\n/).map(function (p) {
+      reflectionHtml = reflectionRaw.split(/\n\s*\n/).map(function (p) {
         return `<p>${escapeHtml(p.trim()).replace(/\n/g, "<br>")}</p>`;
       }).join("");
-      reflectionHtml = paragraphs;
       if (state.lang === "en") {
         reflectionHtml += `<p class="reflection-fallback-notice">${escapeHtml(t("card.reflection.fallbackNotice"))}</p>`;
       }
@@ -280,20 +486,18 @@
     if (btn) btn.setAttribute("aria-expanded", isOpen ? "false" : "true");
   }
 
-  // ---------- Progreso ----------
-
-  function updateProgress() {
-    if (!state.data) return;
-    const completed = state.data.weeks.filter(function (w) {
-      return !w.isIntro && w.status === "completed";
-    }).length;
-    const el = document.getElementById("progress-text");
-    if (el) el.textContent = t("progress.label", { done: completed });
-    const badge = el ? el.closest(".progress-badge") : null;
-    if (badge) badge.setAttribute("aria-label", t("progress.aria"));
+  function focusWeek(id) {
+    const card = document.getElementById("week-" + id);
+    if (!card) return;
+    if (card.dataset.open !== "true") toggleCard(card);
+    card.scrollIntoView({ behavior: "smooth", block: "start" });
+    const btn = card.querySelector(".week-summary");
+    if (btn) {
+      setTimeout(function () { btn.focus({ preventScroll: true }); }, 350);
+    }
   }
 
-  // ---------- Links externos ----------
+  /* ---------- Links externos ---------- */
 
   function applyExternalLinks() {
     if (!state.data || !state.data.links) return;
@@ -316,16 +520,12 @@
     });
 
     const emailLink = document.getElementById("contact-email");
-    if (emailLink && state.data.links.email) {
-      emailLink.setAttribute("href", "mailto:" + state.data.links.email);
-    }
+    if (emailLink && state.data.links.email) emailLink.setAttribute("href", "mailto:" + state.data.links.email);
     const linkedinLink = document.getElementById("contact-linkedin");
-    if (linkedinLink && state.data.links.linkedin) {
-      linkedinLink.setAttribute("href", state.data.links.linkedin);
-    }
+    if (linkedinLink && state.data.links.linkedin) linkedinLink.setAttribute("href", state.data.links.linkedin);
   }
 
-  // ---------- Idioma ----------
+  /* ---------- Idioma ---------- */
 
   function bindLangToggle() {
     document.querySelectorAll(".lang-btn").forEach(function (btn) {
@@ -335,12 +535,12 @@
         state.lang = target;
         saveLang(target);
         applyTranslations();
-        renderWeeks();
+        renderAll();
       });
     });
   }
 
-  // ---------- Navbar: móvil + scroll spy ----------
+  /* ---------- Navbar + scroll spy ---------- */
 
   function bindNav() {
     const toggle = document.getElementById("nav-toggle");
@@ -350,7 +550,6 @@
         const open = menu.classList.toggle("is-open");
         toggle.setAttribute("aria-expanded", open ? "true" : "false");
       });
-
       menu.querySelectorAll(".nav-link").forEach(function (link) {
         link.addEventListener("click", function () {
           if (menu.classList.contains("is-open")) {
@@ -361,11 +560,9 @@
       });
     }
 
-    // Scroll spy
     const sections = ["dashboard", "sobre", "contacto"]
       .map(function (id) { return document.getElementById(id); })
       .filter(Boolean);
-
     if (!sections.length || !("IntersectionObserver" in window)) return;
 
     const linkMap = {};
@@ -393,14 +590,23 @@
     sections.forEach(function (s) { observer.observe(s); });
   }
 
-  // ---------- Footer year ----------
+  /* ---------- Footer year ---------- */
 
   function setFooterYear() {
     const el = document.getElementById("footer-year");
     if (el) el.textContent = String(new Date().getFullYear());
   }
 
-  // ---------- Init ----------
+  /* ---------- Render orquestador ---------- */
+
+  function renderAll() {
+    renderHeroCard();
+    renderJourney();
+    renderSchedule();
+    renderWeeks();
+  }
+
+  /* ---------- Init ---------- */
 
   function loadData() {
     return fetch("data.json", { cache: "no-cache" })
@@ -421,7 +627,7 @@
       .then(function (data) {
         state.data = data;
         applyExternalLinks();
-        renderWeeks();
+        renderAll();
       })
       .catch(function (err) {
         console.error(err);

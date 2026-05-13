@@ -17,16 +17,37 @@ const translations = {
     "nav.toggle.aria": "Abrir o cerrar el menú",
     "nav.lang.aria": "Cambiar idioma",
 
-    "hero.eyebrow": "Bitácora pública · 2026",
-    "hero.title": "Vibe Coding",
-    "hero.subtitle": "Recorrido autodidacta",
-    "hero.context":
-      "Siguiendo el sílabos público de T564A · HGSE · Karen Brennan · Fall 2025",
+    "greeting.title": "Vibe Coding.",
+    "greeting.sub": "Bitácora autodidacta · 2026",
 
-    "progress.label": "{done} de 6 semanas completadas",
-    "progress.aria": "Progreso del recorrido",
+    "hero.eyebrow.upcoming": "PRÓXIMA SEMANA",
+    "hero.eyebrow.today": "HOY ARRANCA",
+    "hero.eyebrow.live": "EN CURSO",
+    "hero.eyebrow.done": "RECORRIDO COMPLETO",
+    "hero.openWeek": "Abrir semana",
+    "hero.viewSchedule": "Ver cronograma",
+    "hero.countdown.daysOne": "EN {n} DÍA",
+    "hero.countdown.daysMany": "EN {n} DÍAS",
+    "hero.countdown.hoursOne": "EN {n} HORA",
+    "hero.countdown.hoursMany": "EN {n} HORAS",
+    "hero.countdown.now": "HOY",
+    "hero.countdown.weeks": "EN {n} SEMANAS",
+    "hero.heading.done": "Recorrido completo",
+    "hero.subtitle.done": "Las 6 semanas del sílabos están publicadas. Gracias por acompañar.",
 
-    "weeks.heading": "Dashboard",
+    "journey.eyebrow": "TU RECORRIDO",
+    "journey.weekOf": "Semana {current} de 6",
+    "journey.preStart": "Empieza el 25 de mayo",
+    "journey.completedOf": "{done} de 6 completadas",
+    "journey.tile.completed": "Completada",
+    "journey.tile.current": "En curso",
+    "journey.tile.pending": "Próximamente",
+    "journey.tile.intro": "Presentación",
+
+    "schedule.heading": "Cronograma",
+    "schedule.viewWeek": "Ver",
+
+    "weeks.heading": "Las semanas",
     "weeks.lead":
       "Cada lunes, una semana nueva. Hacé click en una tarjeta para ver lecturas, herramienta usada, proyecto y reflexión.",
     "weeks.intro.tag": "Presentación",
@@ -87,7 +108,13 @@ const translations = {
       "enero", "febrero", "marzo", "abril", "mayo", "junio",
       "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
     ],
-    "date.format": "{day} de {month} de {year}"
+    "months.short": [
+      "ene", "feb", "mar", "abr", "may", "jun",
+      "jul", "ago", "sep", "oct", "nov", "dic"
+    ],
+    "weekdays.short": ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
+    "date.format": "{day} de {month} de {year}",
+    "date.format.short": "{weekday} {day} {month}"
   },
 
   en: {
@@ -104,16 +131,37 @@ const translations = {
     "nav.toggle.aria": "Open or close the menu",
     "nav.lang.aria": "Change language",
 
-    "hero.eyebrow": "Public log · 2026",
-    "hero.title": "Vibe Coding",
-    "hero.subtitle": "A self-directed journey",
-    "hero.context":
-      "Following the public syllabus of T564A · HGSE · Karen Brennan · Fall 2025",
+    "greeting.title": "Vibe Coding.",
+    "greeting.sub": "A self-directed log · 2026",
 
-    "progress.label": "{done} of 6 weeks completed",
-    "progress.aria": "Journey progress",
+    "hero.eyebrow.upcoming": "UP NEXT",
+    "hero.eyebrow.today": "STARTS TODAY",
+    "hero.eyebrow.live": "IN PROGRESS",
+    "hero.eyebrow.done": "JOURNEY COMPLETE",
+    "hero.openWeek": "Open week",
+    "hero.viewSchedule": "View schedule",
+    "hero.countdown.daysOne": "IN {n} DAY",
+    "hero.countdown.daysMany": "IN {n} DAYS",
+    "hero.countdown.hoursOne": "IN {n} HOUR",
+    "hero.countdown.hoursMany": "IN {n} HOURS",
+    "hero.countdown.now": "TODAY",
+    "hero.countdown.weeks": "IN {n} WEEKS",
+    "hero.heading.done": "Journey complete",
+    "hero.subtitle.done": "All 6 syllabus weeks are published. Thanks for following along.",
 
-    "weeks.heading": "Dashboard",
+    "journey.eyebrow": "YOUR JOURNEY",
+    "journey.weekOf": "Week {current} of 6",
+    "journey.preStart": "Starts May 25",
+    "journey.completedOf": "{done} of 6 completed",
+    "journey.tile.completed": "Completed",
+    "journey.tile.current": "In progress",
+    "journey.tile.pending": "Coming soon",
+    "journey.tile.intro": "Kickoff",
+
+    "schedule.heading": "Schedule",
+    "schedule.viewWeek": "View",
+
+    "weeks.heading": "The weeks",
     "weeks.lead":
       "A new week every Monday. Click a card to see readings, tools, the project, and the weekly reflection.",
     "weeks.intro.tag": "Kickoff",
@@ -174,7 +222,13 @@ const translations = {
       "January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
     ],
-    "date.format": "{month} {day}, {year}"
+    "months.short": [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ],
+    "weekdays.short": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    "date.format": "{month} {day}, {year}",
+    "date.format.short": "{weekday} {month} {day}"
   }
 };
 
