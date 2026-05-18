@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1A385E" />
+
+  <title>Sobre · Vibe Coding · Florencia Falco</title>
+  <meta name="description" content="Sobre este proyecto y sobre Florencia Falco — profesora de Ciencias de la Computación en Uruguay." />
+  <meta name="author" content="Florencia Falco" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Sobre · Vibe Coding · Florencia Falco" />
+  <meta property="og:description" content="Sobre este proyecto y sobre Florencia Falco." />
+  <meta property="og:image" content="assets/og-image.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body data-page="sobre">
+  <div id="navbar-mount"></div>
+
+  <header class="page-header" id="top" role="banner">
+    <div class="container">
+      <h1 class="page-title" data-i18n="page.sobre.title">Sobre.</h1>
+      <p class="page-lead" data-i18n="page.sobre.lead">El proyecto y quién soy.</p>
+      <span class="greeting-rule" aria-hidden="true"></span>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <section class="about-grid" aria-label="Sobre el proyecto y sobre mí">
+        <article class="about-block">
+          <h2 data-i18n="about.project.heading">Sobre este proyecto</h2>
+          <p data-i18n-html="about.project.p1"></p>
+          <p data-i18n-html="about.project.p2"></p>
+
+          <ul class="about-links">
+            <li>
+              <a id="link-syllabus" href="#" target="_blank" rel="noopener noreferrer">
+                <span aria-hidden="true">📄</span>
+                <span data-i18n="about.link.syllabus">Sílabos original (PDF)</span>
+              </a>
+            </li>
+            <li>
+              <a id="link-gazette" href="#" target="_blank" rel="noopener noreferrer">
+                <span aria-hidden="true">📰</span>
+                <span data-i18n="about.link.gazette">Artículo del Harvard Gazette</span>
+              </a>
+            </li>
+          </ul>
+        </article>
+
+        <article class="about-block about-block--me">
+          <h2 data-i18n="about.me.heading">Sobre mí</h2>
+          <p data-i18n-html="about.me.p1"></p>
+          <p data-i18n-html="about.me.p2"></p>
+          <p data-i18n-html="about.me.p3"></p>
+          <p class="about-me-call" data-i18n-html="about.me.p4"></p>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <div id="footer-mount"></div>
+
+  <script src="translations.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#1A385E" />
 
-  <title data-i18n="meta.title">Vibe Coding · Recorrido autodidacta · Florencia Falco</title>
-  <meta name="description" data-i18n="meta.description" content="Bitácora pública del recorrido autodidacta de Florencia Falco por el sílabos público de Vibe Coding (T564A), HGSE, Karen Brennan, Fall 2025." />
+  <title>Vibe Coding · Recorrido autodidacta · Florencia Falco</title>
+  <meta name="description" content="Bitácora pública del recorrido autodidacta de Florencia Falco por el sílabos público de Vibe Coding (T564A), HGSE, Karen Brennan, Fall 2025." />
   <meta name="author" content="Florencia Falco" />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -30,214 +30,103 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body>
-  <a class="skip-link" href="#dashboard" data-i18n="a11y.skip">Saltar al contenido</a>
+<body data-page="dashboard">
+  <div id="navbar-mount"></div>
 
-  <!-- ========================== Navbar ========================== -->
-  <nav class="navbar" role="navigation" aria-label="Navegación principal">
-    <div class="navbar-inner">
-      <a class="navbar-brand" href="#top" aria-label="Florencia Falco — Vibe Coding">
-        <img class="navbar-logo" src="assets/logos/logo-ff.png" alt="" />
-        <span class="navbar-name">Florencia Falco</span>
-      </a>
+  <!-- ========================== Hero ========================== -->
+  <header class="hero" id="top" role="banner">
+    <div class="container hero-inner">
+      <div class="hero-badges" aria-label="Transparencia del proyecto">
+        <span class="hero-badge" data-i18n="hero.badge.notEnrolled">No matriculada</span>
+        <span class="hero-badge" data-i18n="hero.badge.publicSyllabus">Sílabos público</span>
+        <span class="hero-badge" data-i18n="hero.badge.personal">Recorrido personal</span>
+      </div>
 
-      <button type="button" class="nav-toggle" id="nav-toggle"
-              aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
-      </button>
+      <h1 class="hero-title" data-i18n="hero.title">Estoy estudiando Vibe Coding en Harvard</h1>
+      <p class="hero-subtitle" data-i18n="hero.subtitle">
+        (de forma autodidacta, siguiendo el sílabos público del curso T564A de Karen Brennan en la Harvard Graduate School of Education)
+      </p>
 
-      <ul class="nav-menu" id="nav-menu">
-        <li><a class="nav-link" href="#dashboard" data-i18n="nav.dashboard">Dashboard</a></li>
-        <li><a class="nav-link" href="#sobre" data-i18n="nav.about">Sobre</a></li>
-        <li><a class="nav-link" href="#contacto" data-i18n="nav.contact">Contacto</a></li>
-        <li class="nav-lang">
-          <div class="lang-toggle" role="group" aria-label="Idioma">
-            <button type="button" class="lang-btn is-active" data-lang-set="es" aria-pressed="true">ES</button>
-            <span class="lang-sep" aria-hidden="true">|</span>
-            <button type="button" class="lang-btn" data-lang-set="en" aria-pressed="false">EN</button>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
+      <p class="hero-description" data-i18n="hero.description">
+        Durante seis semanas voy a leer los textos del sílabos, construir los proyectos semanales y compartir cada lunes una nueva reflexión. Una bitácora honesta del recorrido, abierta a quien quiera leerla.
+      </p>
 
-  <!-- ========================== Greeting ========================== -->
-  <header class="greeting" id="top" role="banner">
-    <div class="container">
-      <h1 class="greeting-title" data-i18n="greeting.title">Vibe Coding.</h1>
-      <p class="greeting-sub" data-i18n="greeting.sub">Bitácora autodidacta · 2026</p>
-      <span class="greeting-rule" aria-hidden="true"></span>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#weeks">
+          <span data-i18n="hero.cta.seeWeeks">Ver las 6 semanas</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-arrow"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost-dark" id="hero-gazette-link" href="#" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="hero.cta.gazette">Leer el artículo del Harvard Gazette</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-arrow-out"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <p class="hero-credit">
+        <span data-i18n-html="hero.credit.text"></span>
+        · <a id="hero-syllabus-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="hero.credit.link">Ver sílabos original</a>
+      </p>
     </div>
   </header>
 
-  <!-- ========================== Dashboard ========================== -->
-  <main id="dashboard">
-    <div class="container dashboard-grid">
+  <!-- ========================== Main ========================== -->
+  <main id="main">
+    <div class="container">
 
-      <!-- ============ Columna principal ============ -->
-      <div class="dashboard-main">
-
-        <!-- Card hero: próxima semana -->
-        <article class="hero-card" id="hero-card" aria-labelledby="hero-card-title">
-          <div class="hero-card-bg" aria-hidden="true"></div>
-          <div class="hero-card-content">
-            <div class="hero-card-top">
-              <span class="hero-card-eyebrow" id="hero-card-eyebrow" data-i18n="hero.eyebrow.upcoming">PRÓXIMA SEMANA</span>
-              <span class="hero-card-countdown" id="hero-card-countdown"></span>
-            </div>
-            <p class="hero-card-week" id="hero-card-week" data-i18n="weeks.week">Semana</p>
-            <h2 class="hero-card-title" id="hero-card-title">—</h2>
-            <p class="hero-card-topic" id="hero-card-topic"></p>
-            <div class="hero-card-meta">
-              <span class="hero-chip" id="hero-card-date">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v3M17 2v3M3 9h18M5 5h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-                <span></span>
-              </span>
-            </div>
-            <div class="hero-card-actions">
-              <button type="button" class="btn btn-primary" id="hero-card-open" data-i18n="hero.openWeek">Abrir semana</button>
-              <a href="#cronograma" class="btn btn-ghost" data-i18n="hero.viewSchedule">Ver cronograma</a>
-            </div>
+      <!-- Featured week card -->
+      <article class="featured-card" id="featured-card" aria-labelledby="featured-title">
+        <div class="featured-card-bg" aria-hidden="true"></div>
+        <div class="featured-card-content">
+          <div class="featured-card-top">
+            <span class="featured-card-eyebrow" id="featured-eyebrow" data-i18n="featured.eyebrow.upcoming">PRÓXIMA SEMANA</span>
+            <span class="featured-card-countdown" id="featured-countdown"></span>
           </div>
-        </article>
-
-        <!-- Card recorrido -->
-        <section class="journey-card" aria-labelledby="journey-heading">
-          <div class="journey-head">
-            <div>
-              <p class="journey-eyebrow" data-i18n="journey.eyebrow">TU RECORRIDO</p>
-              <h2 class="journey-title" id="journey-heading">
-                <span data-i18n="journey.weekOf">Semana {current} de 6</span>
-              </h2>
-              <p class="journey-sub" id="journey-sub">
-                <span data-i18n="journey.completedOf">0 de 6 completadas</span>
-              </p>
-            </div>
-            <div class="journey-percent" id="journey-percent" aria-hidden="true">0%</div>
+          <p class="featured-card-week" id="featured-week"></p>
+          <h2 class="featured-card-title" id="featured-title">—</h2>
+          <p class="featured-card-topic" id="featured-topic"></p>
+          <div class="featured-card-meta">
+            <span class="featured-chip" id="featured-date">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v3M17 2v3M3 9h18M5 5h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <span></span>
+            </span>
           </div>
-
-          <div class="journey-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-               aria-valuenow="0" aria-labelledby="journey-heading">
-            <span class="journey-bar-fill" id="journey-bar-fill"></span>
+          <div class="featured-card-actions">
+            <button type="button" class="btn btn-on-dark" id="featured-open" data-i18n="featured.openWeek">Abrir semana</button>
           </div>
-
-          <div class="journey-grid" id="journey-grid" role="list">
-            <!-- mini-cards inyectadas por script.js -->
-          </div>
-        </section>
-
-        <!-- Sección semanas -->
-        <section class="weeks" aria-labelledby="weeks-heading">
-          <header class="weeks-head">
-            <h2 id="weeks-heading" class="section-heading" data-i18n="weeks.heading">Las semanas</h2>
-            <p class="section-lead" data-i18n="weeks.lead">
-              Cada lunes, una semana nueva. Hacé click en una tarjeta para ver lecturas, herramientas, proyecto y reflexión.
-            </p>
-          </header>
-          <ol class="week-list" id="week-list">
-            <!-- Tarjetas expandibles inyectadas por script.js -->
-          </ol>
-        </section>
-      </div>
-
-      <!-- ============ Sidebar: Cronograma ============ -->
-      <aside class="dashboard-aside" id="cronograma" aria-labelledby="schedule-heading">
-        <div class="schedule-card">
-          <header class="schedule-head">
-            <svg viewBox="0 0 24 24" aria-hidden="true" class="schedule-icon">
-              <path d="M7 2v3M17 2v3M3 9h18M5 5h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"
-                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-            <h2 id="schedule-heading" data-i18n="schedule.heading">Cronograma</h2>
-          </header>
-          <ul class="schedule-list" id="schedule-list">
-            <!-- inyectadas por script.js -->
-          </ul>
         </div>
-      </aside>
+      </article>
+
+      <!-- Progreso simple -->
+      <section class="progress-block" aria-labelledby="progress-heading">
+        <div class="progress-row">
+          <div>
+            <p class="progress-eyebrow" data-i18n="progress.title">Mi progreso</p>
+            <h2 class="progress-sub" id="progress-heading">
+              <span id="progress-sub" data-i18n="progress.completedOf">0 de 6 semanas completadas</span>
+            </h2>
+          </div>
+          <div class="progress-percent" id="progress-percent" aria-hidden="true">0%</div>
+        </div>
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="progress-heading">
+          <span class="progress-bar-fill" id="progress-bar-fill"></span>
+        </div>
+      </section>
+
+      <!-- 6 semanas -->
+      <section class="weeks" id="weeks" aria-labelledby="weeks-heading">
+        <header class="weeks-head">
+          <h2 id="weeks-heading" class="section-heading" data-i18n="weeks.heading">Las 6 semanas</h2>
+          <p class="section-lead" data-i18n="weeks.lead">
+            Cada lunes, una semana nueva. Hacé click en una tarjeta para ver lecturas, herramienta usada, proyecto y reflexión.
+          </p>
+        </header>
+        <ol class="week-list" id="week-list"></ol>
+      </section>
+
     </div>
   </main>
 
-  <!-- ========================== Sobre ========================== -->
-  <section class="about" id="sobre" aria-labelledby="about-heading">
-    <div class="container">
-      <h2 id="about-heading" class="section-heading" data-i18n="about.heading">Sobre</h2>
-
-      <div class="about-grid">
-        <article class="about-block">
-          <h3 data-i18n="about.project.heading">Sobre este proyecto</h3>
-          <p data-i18n-html="about.project.p1"></p>
-          <p data-i18n-html="about.project.p2"></p>
-
-          <ul class="about-links">
-            <li>
-              <a id="link-syllabus" href="#" target="_blank" rel="noopener noreferrer">
-                <span aria-hidden="true">📄</span>
-                <span data-i18n="about.link.syllabus">Sílabos original (PDF)</span>
-              </a>
-            </li>
-            <li>
-              <a id="link-gazette" href="#" target="_blank" rel="noopener noreferrer">
-                <span aria-hidden="true">📰</span>
-                <span data-i18n="about.link.gazette">Artículo del Harvard Gazette</span>
-              </a>
-            </li>
-          </ul>
-        </article>
-
-        <article class="about-block about-block--me">
-          <h3 data-i18n="about.me.heading">Sobre mí</h3>
-          <p data-i18n-html="about.me.p1"></p>
-          <p data-i18n-html="about.me.p2"></p>
-          <p data-i18n-html="about.me.p3"></p>
-          <p class="about-me-call" data-i18n-html="about.me.p4"></p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================== Contacto ========================== -->
-  <section class="contact" id="contacto" aria-labelledby="contact-heading">
-    <div class="container contact-inner">
-      <h2 id="contact-heading" class="section-heading" data-i18n="contact.heading">Contacto</h2>
-      <p class="contact-lead" data-i18n="contact.lead">
-        ¿Sos docente, te resuenan estas preguntas, o querés sumarte a la conversación? Escribime.
-      </p>
-
-      <div class="contact-actions">
-        <a class="contact-cta contact-cta--primary" id="contact-email" href="mailto:hola@florenciafalco.com">
-          <span class="contact-icon" aria-hidden="true">✉</span>
-          <span class="contact-cta-text">
-            <span class="contact-cta-label" data-i18n="contact.email.label">Escribime</span>
-            <span class="contact-cta-detail">hola@florenciafalco.com</span>
-          </span>
-        </a>
-
-        <a class="contact-cta contact-cta--secondary" id="contact-linkedin"
-           href="https://www.linkedin.com/in/florencia-falco" target="_blank" rel="noopener noreferrer">
-          <span class="contact-icon" aria-hidden="true">in</span>
-          <span class="contact-cta-text">
-            <span class="contact-cta-label" data-i18n="contact.linkedin.label">LinkedIn</span>
-            <span class="contact-cta-detail">/in/florencia-falco</span>
-          </span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer-inner">
-      <p class="footer-credit" data-i18n="footer.credit">
-        Sílabos original: Karen Brennan &amp; Jacob Wolf · HGSE Fall 2025
-      </p>
-      <p class="footer-author">
-        <span data-i18n="footer.author">Diseño y desarrollo: Florencia Falco</span>
-        · <span id="footer-year">2026</span>
-      </p>
-    </div>
-  </footer>
+  <div id="footer-mount"></div>
 
   <script src="translations.js"></script>
   <script src="script.js" defer></script>

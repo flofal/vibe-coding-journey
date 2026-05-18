@@ -1,43 +1,18 @@
 {
-  "$schema": "Este archivo es editable. Cambiar 'status', 'tool', 'project.*', 'reflection', 'linkedinUrl' y las notas de lectura cuando una semana se actualice. Re-deploy automático en GitHub Pages.",
+  "$schema": "Archivo editable. Cambiar 'status', 'tool', 'project.*', 'reflection', 'linkedinUrl' y las notas de lectura cuando una semana se actualice. Re-deploy automático en GitHub Pages al pushear.",
   "weeks": [
     {
-      "id": 0,
-      "isIntro": true,
-      "title": "Build something that... introduces the journey",
-      "topic": {
-        "es": "Presentación del proyecto",
-        "en": "Project kickoff"
-      },
-      "date": "2026-05-18",
-      "status": "pending",
-      "description": {
-        "es": "Semana de presentación: por qué empiezo este recorrido, qué espero aprender y cómo voy a compartir el proceso. No es contenido del sílabos de Karen; es el punto de partida.",
-        "en": "Kickoff week: why I'm starting this journey, what I hope to learn, and how I'll share the process. Not part of Karen's syllabus — this is the starting point."
-      },
-      "readings": [],
-      "tool": "",
-      "project": {
-        "url": "",
-        "embed": false,
-        "screenshots": []
-      },
-      "reflection": "",
-      "linkedinUrl": ""
-    },
-    {
       "id": 1,
-      "isIntro": false,
       "title": "Build something that... tells a story",
       "topic": {
         "es": "Cuenta una historia",
         "en": "Tells a story"
       },
-      "date": "2026-05-25",
+      "date": "2026-05-18",
       "status": "pending",
       "description": {
-        "es": "Explorar cómo el código puede ser un medio narrativo. Construir una pieza que cuente algo: un recuerdo, una idea, una pregunta abierta.",
-        "en": "Explore how code can be a narrative medium. Build a piece that tells something: a memory, an idea, an open question."
+        "es": "Primera semana del recorrido. Explorar cómo el código puede ser un medio narrativo: construir una pieza que cuente algo —un recuerdo, una idea, una pregunta abierta— y arrancar la conversación con la audiencia que va a acompañar las próximas seis semanas.",
+        "en": "First week of the journey. Explore how code can be a narrative medium: build a piece that tells something — a memory, an idea, an open question — and kick off the conversation with the audience that will follow the next six weeks."
       },
       "readings": [
         {
@@ -56,27 +31,22 @@
         }
       ],
       "tool": "",
-      "project": {
-        "url": "",
-        "embed": false,
-        "screenshots": []
-      },
+      "project": { "url": "", "embed": false, "screenshots": [] },
       "reflection": "",
       "linkedinUrl": ""
     },
     {
       "id": 2,
-      "isIntro": false,
       "title": "Build something that... makes your life easier",
       "topic": {
         "es": "Te hace la vida más fácil",
         "en": "Makes your life easier"
       },
-      "date": "2026-06-01",
+      "date": "2026-05-25",
       "status": "pending",
       "description": {
-        "es": "Identificar una fricción concreta de mi día a día y construir una herramienta que la resuelva, aunque sea de forma mínima.",
-        "en": "Identify a concrete friction from my daily life and build a tool that solves it, even if minimally."
+        "es": "Identificar una fricción concreta del día a día y construir una herramienta que la resuelva, aunque sea de forma mínima.",
+        "en": "Identify a concrete friction from daily life and build a tool that solves it, even if minimally."
       },
       "readings": [
         {
@@ -95,23 +65,18 @@
         }
       ],
       "tool": "",
-      "project": {
-        "url": "",
-        "embed": false,
-        "screenshots": []
-      },
+      "project": { "url": "", "embed": false, "screenshots": [] },
       "reflection": "",
       "linkedinUrl": ""
     },
     {
       "id": 3,
-      "isIntro": false,
       "title": "Build something that... sparks joy",
       "topic": {
         "es": "Despierta alegría",
         "en": "Sparks joy"
       },
-      "date": "2026-06-08",
+      "date": "2026-06-01",
       "status": "pending",
       "description": {
         "es": "Construir algo gratuito en el sentido más literal: sin métrica de productividad, solo por el gusto de hacerlo.",
@@ -134,23 +99,18 @@
         }
       ],
       "tool": "",
-      "project": {
-        "url": "",
-        "embed": false,
-        "screenshots": []
-      },
+      "project": { "url": "", "embed": false, "screenshots": [] },
       "reflection": "",
       "linkedinUrl": ""
     },
     {
       "id": 4,
-      "isIntro": false,
       "title": "Build something that... answers a question",
       "topic": {
         "es": "Responde una pregunta",
         "en": "Answers a question"
       },
-      "date": "2026-06-15",
+      "date": "2026-06-08",
       "status": "pending",
       "description": {
         "es": "Tomar una pregunta que me ronde —técnica, pedagógica, personal— y diseñar un artefacto que ayude a responderla o a hacerla más interesante.",
@@ -173,23 +133,18 @@
         }
       ],
       "tool": "",
-      "project": {
-        "url": "",
-        "embed": false,
-        "screenshots": []
-      },
+      "project": { "url": "", "embed": false, "screenshots": [] },
       "reflection": "",
       "linkedinUrl": ""
     },
     {
       "id": 5,
-      "isIntro": false,
       "title": "Build something that... invites play",
       "topic": {
         "es": "Invita a jugar",
         "en": "Invites play"
       },
-      "date": "2026-06-22",
+      "date": "2026-06-15",
       "status": "pending",
       "description": {
         "es": "Diseñar una experiencia que invite a otrxs a jugar, explorar, equivocarse. El éxito se mide en sonrisas, no en métricas.",
@@ -212,23 +167,18 @@
         }
       ],
       "tool": "",
-      "project": {
-        "url": "",
-        "embed": false,
-        "screenshots": []
-      },
+      "project": { "url": "", "embed": false, "screenshots": [] },
       "reflection": "",
       "linkedinUrl": ""
     },
     {
       "id": 6,
-      "isIntro": false,
       "title": "Build something that... feels like magic",
       "topic": {
         "es": "Se siente como magia",
         "en": "Feels like magic"
       },
-      "date": "2026-06-29",
+      "date": "2026-06-22",
       "status": "pending",
       "description": {
         "es": "Cierre del módulo: una pieza que combine todo lo aprendido y que provoque ese instante de asombro en quien la usa.",
@@ -251,11 +201,7 @@
         }
       ],
       "tool": "",
-      "project": {
-        "url": "",
-        "embed": false,
-        "screenshots": []
-      },
+      "project": { "url": "", "embed": false, "screenshots": [] },
       "reflection": "",
       "linkedinUrl": ""
     }

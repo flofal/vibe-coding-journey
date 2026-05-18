@@ -1,5 +1,10 @@
 /* =========================================================
-   Vibe Coding Dashboard — lógica
+   Vibe Coding Dashboard — lógica compartida (3 páginas).
+
+   - Inyecta navbar y footer como partials en cada página.
+   - Aplica i18n a strings fijas.
+   - Renderiza dashboard solo si los elementos existen.
+   - Bind del toggle ES/EN con persistencia en localStorage.
    ========================================================= */
 
 (function () {
@@ -11,6 +16,68 @@
   const DAY_MS = 24 * 60 * 60 * 1000;
 
   const state = { lang: DEFAULT_LANG, data: null };
+
+  /* ---------- Partials (navbar + footer compartidos) ---------- */
+
+  const NAVBAR_HTML = `
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Saltar al contenido</a>
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+      <div class="navbar-inner">
+        <a class="navbar-brand" href="index.html" aria-label="Florencia Falco — Vibe Coding">
+          <img class="navbar-logo" src="assets/logos/logo-ff.png" alt="" />
+          <span class="navbar-name">Florencia Falco</span>
+        </a>
+
+        <button type="button" class="nav-toggle" id="nav-toggle"
+                aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+
+        <ul class="nav-menu" id="nav-menu">
+          <li><a class="nav-link" href="index.html" data-page-link="dashboard" data-i18n="nav.dashboard">Dashboard</a></li>
+          <li><a class="nav-link" href="sobre.html" data-page-link="sobre" data-i18n="nav.about">Sobre</a></li>
+          <li><a class="nav-link" href="contacto.html" data-page-link="contacto" data-i18n="nav.contact">Contacto</a></li>
+          <li class="nav-lang">
+            <div class="lang-toggle" role="group" aria-label="Idioma">
+              <button type="button" class="lang-btn" data-lang-set="es">ES</button>
+              <span class="lang-sep" aria-hidden="true">|</span>
+              <button type="button" class="lang-btn" data-lang-set="en">EN</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  `;
+
+  const FOOTER_HTML = `
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p class="footer-credit" data-i18n="footer.credit">
+          Sílabos original: Karen Brennan &amp; Jacob Wolf · HGSE Fall 2025
+        </p>
+        <p class="footer-author">
+          <span data-i18n="footer.author">Diseño y desarrollo: Florencia Falco</span>
+          · <span id="footer-year">2026</span>
+        </p>
+      </div>
+    </footer>
+  `;
+
+  function mountPartials() {
+    const navMount = document.getElementById("navbar-mount");
+    if (navMount) navMount.innerHTML = NAVBAR_HTML;
+    const footMount = document.getElementById("footer-mount");
+    if (footMount) footMount.innerHTML = FOOTER_HTML;
+  }
+
+  function setActiveNavLink() {
+    const page = document.body.dataset.page;
+    document.querySelectorAll(".nav-link[data-page-link]").forEach(function (a) {
+      a.classList.toggle("is-active", a.dataset.pageLink === page);
+    });
+  }
 
   /* ---------- Utilidades ---------- */
 
@@ -41,10 +108,8 @@
     if (!iso) return null;
     const parts = iso.split("-");
     if (parts.length !== 3) return null;
-    // Construyo como local 00:00 para evitar shift de timezone
     return new Date(parseInt(parts[0],10), parseInt(parts[1],10) - 1, parseInt(parts[2],10));
   }
-
   function startOfDay(d) { const x = new Date(d); x.setHours(0,0,0,0); return x; }
 
   function formatDateLong(isoDate) {
@@ -58,18 +123,6 @@
     });
   }
 
-  function formatDateShort(isoDate) {
-    const d = parseISODate(isoDate);
-    if (!d) return "";
-    const months = t("months.short");
-    const days = t("weekdays.short");
-    return t("date.format.short", {
-      day: d.getDate(),
-      month: Array.isArray(months) ? months[d.getMonth()] : "",
-      weekday: Array.isArray(days) ? days[d.getDay()] : ""
-    });
-  }
-
   function getInitialLang() {
     try {
       const saved = localStorage.getItem(STORAGE_LANG);
@@ -79,13 +132,16 @@
   }
   function saveLang(lang) { try { localStorage.setItem(STORAGE_LANG, lang); } catch (_) {} }
 
-  /* ---------- Strings fijas ---------- */
+  /* ---------- Aplicar strings fijas ---------- */
 
   function applyTranslations() {
     document.documentElement.lang = t("html.lang");
     document.documentElement.dataset.lang = state.lang;
 
-    document.title = t("meta.title");
+    // Título de página por data-page
+    const page = document.body.dataset.page;
+    const titleKey = "meta.title." + (page || "dashboard");
+    document.title = t(titleKey);
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute("content", t("meta.description"));
 
@@ -109,16 +165,14 @@
     if (navToggle) navToggle.setAttribute("aria-label", t("nav.toggle.aria"));
   }
 
-  /* ---------- Hero card dinámico ---------- */
+  /* ---------- Featured week (dashboard) ---------- */
 
   function pickFeaturedWeek(weeks, today) {
-    // Si hay alguna en in_progress, esa
     const inProgress = weeks.find(function (w) { return w.status === "in_progress"; });
     if (inProgress) return { state: "live", week: inProgress };
 
     const todayMs = startOfDay(today).getTime();
 
-    // Si hoy cae dentro de la ventana [date, date+7) de alguna semana
     for (let i = 0; i < weeks.length; i++) {
       const w = weeks[i];
       const d = parseISODate(w.date);
@@ -129,7 +183,6 @@
       if (todayMs > start && todayMs < end) return { state: "live", week: w };
     }
 
-    // Próxima con fecha futura
     const future = weeks
       .filter(function (w) {
         const d = parseISODate(w.date);
@@ -146,52 +199,47 @@
     if (!target) return "";
     const diff = startOfDay(target).getTime() - startOfDay(new Date()).getTime();
     const days = Math.round(diff / DAY_MS);
-    if (state_ === "today" || days === 0) return t("hero.countdown.now");
+    if (state_ === "today" || days === 0) return t("featured.countdown.now");
     if (days < 0) return "";
-    if (days === 1) return t("hero.countdown.daysOne", { n: 1 });
-    if (days <= 14) return t("hero.countdown.daysMany", { n: days });
+    if (days === 1) return t("featured.countdown.daysOne", { n: 1 });
+    if (days <= 14) return t("featured.countdown.daysMany", { n: days });
     const weeks = Math.round(days / 7);
-    return t("hero.countdown.weeks", { n: weeks });
+    return t("featured.countdown.weeks", { n: weeks });
   }
 
-  function renderHeroCard() {
-    if (!state.data) return;
+  function renderFeatured() {
+    const card = document.getElementById("featured-card");
+    if (!card || !state.data) return;
+
     const featured = pickFeaturedWeek(state.data.weeks, new Date());
     const w = featured.week;
 
-    const card = document.getElementById("hero-card");
-    const eyebrowEl = document.getElementById("hero-card-eyebrow");
-    const titleEl = document.getElementById("hero-card-title");
-    const topicEl = document.getElementById("hero-card-topic");
-    const weekEl = document.getElementById("hero-card-week");
-    const dateEl = document.getElementById("hero-card-date");
-    const dateText = dateEl ? dateEl.querySelector("span") : null;
-    const countdownEl = document.getElementById("hero-card-countdown");
-    const openBtn = document.getElementById("hero-card-open");
-
-    if (!card || !w) return;
+    const eyebrowEl = document.getElementById("featured-eyebrow");
+    const titleEl = document.getElementById("featured-title");
+    const topicEl = document.getElementById("featured-topic");
+    const weekEl = document.getElementById("featured-week");
+    const dateText = document.querySelector("#featured-date span");
+    const countdownEl = document.getElementById("featured-countdown");
+    const openBtn = document.getElementById("featured-open");
 
     let eyebrowKey;
     switch (featured.state) {
-      case "today": eyebrowKey = "hero.eyebrow.today"; break;
-      case "live": eyebrowKey = "hero.eyebrow.live"; break;
-      case "done": eyebrowKey = "hero.eyebrow.done"; break;
-      default: eyebrowKey = "hero.eyebrow.upcoming";
+      case "today": eyebrowKey = "featured.eyebrow.today"; break;
+      case "live": eyebrowKey = "featured.eyebrow.live"; break;
+      case "done": eyebrowKey = "featured.eyebrow.done"; break;
+      default: eyebrowKey = "featured.eyebrow.upcoming";
     }
     if (eyebrowEl) eyebrowEl.textContent = t(eyebrowKey);
 
     if (featured.state === "done") {
-      if (titleEl) titleEl.textContent = t("hero.heading.done");
-      if (topicEl) topicEl.textContent = t("hero.subtitle.done");
+      if (titleEl) titleEl.textContent = t("featured.done.title");
+      if (topicEl) topicEl.textContent = t("featured.done.subtitle");
       if (weekEl) weekEl.textContent = "";
       if (dateText) dateText.textContent = "";
       if (countdownEl) countdownEl.textContent = "";
+      if (openBtn) openBtn.style.display = "none";
     } else {
-      if (weekEl) {
-        weekEl.textContent = w.isIntro
-          ? t("weeks.intro.tag")
-          : t("weeks.week") + " " + w.id;
-      }
+      if (weekEl) weekEl.textContent = t("weeks.week") + " " + w.id;
       if (titleEl) titleEl.textContent = w.title;
       if (topicEl) {
         const topic = (w.topic && w.topic[state.lang]) || (w.topic && w.topic.es) || "";
@@ -199,120 +247,35 @@
       }
       if (dateText) dateText.textContent = formatDateLong(w.date);
       if (countdownEl) countdownEl.textContent = formatCountdown(w.date, featured.state);
-    }
-
-    if (openBtn) {
-      openBtn.onclick = function () {
-        if (featured.state === "done") return;
-        focusWeek(w.id);
-      };
+      if (openBtn) {
+        openBtn.style.display = "";
+        openBtn.onclick = function () { focusWeek(w.id); };
+      }
     }
   }
 
-  /* ---------- Card "Tu recorrido" ---------- */
+  /* ---------- Progreso simple ---------- */
 
-  function renderJourney() {
+  function renderProgress() {
     if (!state.data) return;
-    const weeks = state.data.weeks;
-    const realWeeks = weeks.filter(function (w) { return !w.isIntro; });
-    const completed = realWeeks.filter(function (w) { return w.status === "completed"; }).length;
+    const subEl = document.getElementById("progress-sub");
+    const pctEl = document.getElementById("progress-percent");
+    const barEl = document.getElementById("progress-bar-fill");
+    if (!subEl && !pctEl && !barEl) return;
 
-    // Semana actual (la primera no completada y no intro)
-    let current = realWeeks.findIndex(function (w) { return w.status !== "completed"; });
-    if (current === -1) current = realWeeks.length; // todo completo
-    else current = current + 1; // 1-indexed para mostrar
+    const total = 6;
+    const completed = state.data.weeks.filter(function (w) {
+      return w.status === "completed";
+    }).length;
+    const pct = Math.round((completed / total) * 100);
 
-    const pct = Math.round((completed / 6) * 100);
-
-    const titleEl = document.querySelector(".journey-title [data-i18n]");
-    if (titleEl) titleEl.textContent = t("journey.weekOf", { current: Math.max(1, Math.min(6, current)) });
-
-    const subEl = document.querySelector("#journey-sub [data-i18n]");
-    if (subEl) subEl.textContent = t("journey.completedOf", { done: completed });
-
-    const pctEl = document.getElementById("journey-percent");
+    if (subEl) subEl.textContent = t("progress.completedOf", { done: completed });
     if (pctEl) pctEl.textContent = pct + "%";
-
-    const bar = document.getElementById("journey-bar-fill");
-    if (bar) bar.style.width = pct + "%";
-    const wrap = bar ? bar.parentElement : null;
-    if (wrap) wrap.setAttribute("aria-valuenow", String(pct));
-
-    // Grid mini-cards: 7 (Sem 0 + 1..6)
-    const grid = document.getElementById("journey-grid");
-    if (!grid) return;
-    grid.innerHTML = "";
-    weeks.forEach(function (w) {
-      const status = w.isIntro ? "intro" : (w.status || "pending");
-      const tile = document.createElement("a");
-      tile.className = "journey-tile";
-      tile.href = "#week-summary-" + w.id;
-      tile.dataset.status = status;
-      tile.setAttribute("role", "listitem");
-
-      const numLabel = w.isIntro
-        ? t("weeks.intro.tag")
-        : (t("weeks.week").toUpperCase().slice(0, 1) + w.id);
-      const stateLabel = w.isIntro
-        ? t("journey.tile.intro")
-        : status === "completed" ? t("journey.tile.completed")
-        : status === "in_progress" ? t("journey.tile.current")
-        : t("journey.tile.pending");
-
-      tile.innerHTML = `
-        <span class="journey-tile-head">
-          <span class="journey-tile-num">${escapeHtml(numLabel)}</span>
-          <span class="journey-tile-icon" aria-hidden="true">${tileIcon(status)}</span>
-        </span>
-        <span class="journey-tile-label">${escapeHtml(stateLabel)}</span>
-      `;
-      tile.addEventListener("click", function (e) {
-        e.preventDefault();
-        focusWeek(w.id);
-      });
-      grid.appendChild(tile);
-    });
-  }
-
-  function tileIcon(status) {
-    if (status === "completed") {
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`;
+    if (barEl) {
+      barEl.style.width = pct + "%";
+      const wrap = barEl.parentElement;
+      if (wrap) wrap.setAttribute("aria-valuenow", String(pct));
     }
-    if (status === "in_progress" || status === "intro") {
-      return `<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/></svg>`;
-    }
-    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`;
-  }
-
-  /* ---------- Sidebar cronograma ---------- */
-
-  function renderSchedule() {
-    if (!state.data) return;
-    const list = document.getElementById("schedule-list");
-    if (!list) return;
-    list.innerHTML = "";
-
-    state.data.weeks.forEach(function (w) {
-      const item = document.createElement("li");
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "schedule-item";
-      btn.dataset.status = w.isIntro ? "intro" : (w.status || "pending");
-
-      const title = w.isIntro
-        ? t("weeks.intro.tag")
-        : t("weeks.week") + " " + w.id;
-      const topic = (w.topic && w.topic[state.lang]) || (w.topic && w.topic.es) || "";
-
-      btn.innerHTML = `
-        <span class="schedule-item-date">${escapeHtml(formatDateShort(w.date))}</span>
-        <span class="schedule-item-title">${escapeHtml(title)}</span>
-        <span class="schedule-item-topic">${escapeHtml(topic)}</span>
-      `;
-      btn.addEventListener("click", function () { focusWeek(w.id); });
-      item.appendChild(btn);
-      list.appendChild(item);
-    });
   }
 
   /* ---------- Tarjetas expandibles ---------- */
@@ -332,23 +295,13 @@
 
       const summaryId = "week-summary-" + w.id;
       const detailsId = "week-details-" + w.id;
-
-      const introTag = w.isIntro
-        ? `<span class="intro-tag">${escapeHtml(t("weeks.intro.tag"))}</span>`
-        : "";
-
-      const numberLabel = w.isIntro
-        ? `<span class="week-num">0<small>${escapeHtml(t("weeks.intro.tag"))}</small></span>`
-        : `<span class="week-num">${w.id}<small>${escapeHtml(t("weeks.week"))}</small></span>`;
-
       const topic = (w.topic && w.topic[state.lang]) || (w.topic && w.topic.es) || "";
 
       li.innerHTML = `
         <button type="button" class="week-summary" id="${summaryId}"
                 aria-expanded="false" aria-controls="${detailsId}">
-          ${numberLabel}
+          <span class="week-num">${w.id}<small>${escapeHtml(t("weeks.week"))}</small></span>
           <span class="week-info">
-            ${introTag}
             <span class="week-title">${escapeHtml(w.title)}</span>
             <span class="week-topic">${escapeHtml(topic)}</span>
             <span class="week-date">${escapeHtml(t("weeks.published", { date: formatDateLong(w.date) }))}</span>
@@ -403,13 +356,6 @@
         <div class="week-section">
           <h4>${escapeHtml(t("card.readings"))}</h4>
           <ul class="readings-list">${items}</ul>
-        </div>
-      `);
-    } else if (!w.isIntro) {
-      sections.push(`
-        <div class="week-section">
-          <h4>${escapeHtml(t("card.readings"))}</h4>
-          <p class="tool-empty">${escapeHtml(t("card.readings.empty"))}</p>
         </div>
       `);
     }
@@ -492,18 +438,19 @@
     if (card.dataset.open !== "true") toggleCard(card);
     card.scrollIntoView({ behavior: "smooth", block: "start" });
     const btn = card.querySelector(".week-summary");
-    if (btn) {
-      setTimeout(function () { btn.focus({ preventScroll: true }); }, 350);
-    }
+    if (btn) setTimeout(function () { btn.focus({ preventScroll: true }); }, 350);
   }
 
-  /* ---------- Links externos ---------- */
+  /* ---------- Links externos (dashboard + sobre) ---------- */
 
   function applyExternalLinks() {
     if (!state.data || !state.data.links) return;
+
     const map = {
       "link-syllabus": state.data.links.syllabusPdf,
-      "link-gazette": state.data.links.gazetteArticle
+      "link-gazette": state.data.links.gazetteArticle,
+      "hero-syllabus-link": state.data.links.syllabusPdf,
+      "hero-gazette-link": state.data.links.gazetteArticle
     };
     Object.keys(map).forEach(function (id) {
       const a = document.getElementById(id);
@@ -535,59 +482,29 @@
         state.lang = target;
         saveLang(target);
         applyTranslations();
-        renderAll();
+        renderDashboard();
       });
     });
   }
 
-  /* ---------- Navbar + scroll spy ---------- */
+  /* ---------- Navbar móvil ---------- */
 
   function bindNav() {
     const toggle = document.getElementById("nav-toggle");
     const menu = document.getElementById("nav-menu");
-    if (toggle && menu) {
-      toggle.addEventListener("click", function () {
-        const open = menu.classList.toggle("is-open");
-        toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      });
-      menu.querySelectorAll(".nav-link").forEach(function (link) {
-        link.addEventListener("click", function () {
-          if (menu.classList.contains("is-open")) {
-            menu.classList.remove("is-open");
-            toggle.setAttribute("aria-expanded", "false");
-          }
-        });
-      });
-    }
-
-    const sections = ["dashboard", "sobre", "contacto"]
-      .map(function (id) { return document.getElementById(id); })
-      .filter(Boolean);
-    if (!sections.length || !("IntersectionObserver" in window)) return;
-
-    const linkMap = {};
-    document.querySelectorAll(".nav-link[href^='#']").forEach(function (a) {
-      const id = a.getAttribute("href").slice(1);
-      linkMap[id] = a;
+    if (!toggle || !menu) return;
+    toggle.addEventListener("click", function () {
+      const open = menu.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
-
-    const observer = new IntersectionObserver(function (entries) {
-      let topMost = null;
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          if (!topMost || entry.boundingClientRect.top < topMost.boundingClientRect.top) {
-            topMost = entry;
-          }
+    menu.querySelectorAll(".nav-link").forEach(function (link) {
+      link.addEventListener("click", function () {
+        if (menu.classList.contains("is-open")) {
+          menu.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
         }
       });
-      if (topMost) {
-        Object.keys(linkMap).forEach(function (id) {
-          linkMap[id].classList.toggle("is-active", id === topMost.target.id);
-        });
-      }
-    }, { rootMargin: "-30% 0px -55% 0px", threshold: 0 });
-
-    sections.forEach(function (s) { observer.observe(s); });
+    });
   }
 
   /* ---------- Footer year ---------- */
@@ -597,13 +514,14 @@
     if (el) el.textContent = String(new Date().getFullYear());
   }
 
-  /* ---------- Render orquestador ---------- */
+  /* ---------- Render dashboard (gated) ---------- */
 
-  function renderAll() {
-    renderHeroCard();
-    renderJourney();
-    renderSchedule();
+  function renderDashboard() {
+    if (!state.data) return;
+    renderFeatured();
+    renderProgress();
     renderWeeks();
+    applyExternalLinks();
   }
 
   /* ---------- Init ---------- */
@@ -616,18 +534,33 @@
       });
   }
 
+  function needsData() {
+    return !!document.getElementById("week-list")
+        || !!document.getElementById("featured-card")
+        || !!document.getElementById("progress-bar-fill")
+        || !!document.getElementById("link-syllabus")
+        || !!document.getElementById("hero-gazette-link")
+        || !!document.getElementById("contact-email")
+        || !!document.getElementById("contact-linkedin");
+  }
+
   function init() {
     state.lang = getInitialLang();
+    mountPartials();
+    setActiveNavLink();
     setFooterYear();
-    bindLangToggle();
     bindNav();
+    bindLangToggle();
     applyTranslations();
+
+    if (!needsData()) return;
 
     loadData()
       .then(function (data) {
         state.data = data;
+        renderDashboard();
+        // El email/linkedin viven en data.json pero también deben aplicarse en contacto/sobre
         applyExternalLinks();
-        renderAll();
       })
       .catch(function (err) {
         console.error(err);

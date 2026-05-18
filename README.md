@@ -12,11 +12,13 @@ HTML + CSS + JavaScript vanilla. Sin frameworks, sin build step, sin backend. Ho
 
 ```
 /
-├── index.html
-├── styles.css
-├── script.js
+├── index.html          ← Dashboard
+├── sobre.html          ← Sobre este proyecto + Sobre mí
+├── contacto.html       ← Email + LinkedIn
+├── styles.css          ← compartido
+├── script.js           ← compartido (inyecta navbar/footer como partials)
 ├── translations.js     ← strings fijas ES/EN
-├── data.json           ← contenido editable de las semanas
+├── data.json           ← contenido editable de las 6 semanas
 ├── /assets/
 │   ├── /fonts/         ← DK Rotorua (.otf)
 │   ├── /logos/         ← logo de Flo
@@ -29,13 +31,12 @@ HTML + CSS + JavaScript vanilla. Sin frameworks, sin build step, sin backend. Ho
 
 ## Cronograma
 
-- **Semana 0** — lunes 18 mayo 2026 — Presentación del proyecto
-- **Semana 1** — lunes 25 mayo 2026 — Build something that... tells a story
-- **Semana 2** — lunes 1 junio 2026 — Build something that... makes your life easier
-- **Semana 3** — lunes 8 junio 2026 — Build something that... sparks joy
-- **Semana 4** — lunes 15 junio 2026 — Build something that... answers a question
-- **Semana 5** — lunes 22 junio 2026 — Build something that... invites play
-- **Semana 6** — lunes 29 junio 2026 — Build something that... feels like magic
+- **Semana 1** — lunes 18 mayo 2026 — Build something that... tells a story
+- **Semana 2** — lunes 25 mayo 2026 — Build something that... makes your life easier
+- **Semana 3** — lunes 1 junio 2026 — Build something that... sparks joy
+- **Semana 4** — lunes 8 junio 2026 — Build something that... answers a question
+- **Semana 5** — lunes 15 junio 2026 — Build something that... invites play
+- **Semana 6** — lunes 22 junio 2026 — Build something that... feels like magic
 
 Cada lunes a las 10:00 (UTC−3) se publica un post de LinkedIn que acompaña la actualización de la tarjeta correspondiente.
 
@@ -44,7 +45,7 @@ Cada lunes a las 10:00 (UTC−3) se publica un post de LinkedIn que acompaña la
 Toda la información variable vive en `data.json`. Para actualizar una semana:
 
 1. Abrir `data.json`.
-2. Buscar el objeto de la semana correspondiente (`"id": 0` a `"id": 6`).
+2. Buscar el objeto de la semana correspondiente (`"id": 1` a `"id": 6`).
 3. Editar:
    - `status`: `"pending"`, `"in_progress"` o `"completed"`.
    - `tool`: herramienta usada (texto libre, ej: `"Replit"`, `"Claude Code"`).

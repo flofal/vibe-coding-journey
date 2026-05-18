@@ -1,6 +1,6 @@
 /* =========================================================
-   Vibe Coding Dashboard — estilos
-   Paleta y tipografías según manual de marca de Flo.
+   Vibe Coding · Estilos compartidos
+   Paleta y tipografías: manual de marca de Flo.
    ========================================================= */
 
 @font-face {
@@ -12,7 +12,6 @@
 }
 
 :root {
-  /* Paleta oficial */
   --color-night: #1A385E;
   --color-night-deep: #0F2543;
   --color-lavanda: #D7CAFF;
@@ -49,7 +48,7 @@
   --space-6: 3.6rem;
   --space-7: 5rem;
 
-  --max-width: 1180px;
+  --max-width: 1080px;
   --navbar-h: 68px;
 }
 
@@ -269,68 +268,166 @@ a:hover, a:focus-visible {
 }
 
 /* =========================================================
-   Greeting (saludo gigante serif)
+   Hero del Dashboard
    ========================================================= */
 
-.greeting {
-  padding: var(--space-6) 0 var(--space-4);
+.hero {
+  padding: var(--space-7) 0 var(--space-5);
+  background: var(--color-blanco-humo);
 }
-.greeting-title {
+.hero-inner {
+  text-align: left;
+  max-width: 800px;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 var(--space-3);
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.32rem 0.75rem;
+  border-radius: 999px;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-night);
+}
+.hero-badge::before {
+  content: "";
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--color-verde-tecno);
+  margin-right: 0.5rem;
+}
+
+.hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 7vw, 4.6rem);
-  line-height: 1;
-  margin: 0;
+  font-size: clamp(2.3rem, 5.6vw, 4rem);
+  line-height: 1.04;
+  margin: 0 0 var(--space-3);
   color: var(--color-night);
   letter-spacing: -0.02em;
+  max-width: 18ch;
 }
-.greeting-sub {
-  margin: 0.6rem 0 0;
-  font-size: 1.05rem;
+.hero-subtitle {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.7vw, 1.25rem);
   color: var(--color-text-muted);
-  font-weight: 500;
+  line-height: 1.4;
+  max-width: 60ch;
 }
-.greeting-rule {
-  display: block;
-  width: 56px;
-  height: 3px;
+.hero-description {
+  margin: 0 0 var(--space-4);
+  font-size: 1.05rem;
+  color: var(--color-text);
+  max-width: 62ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.hero-credit {
+  margin: var(--space-4) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--color-border);
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  max-width: 62ch;
+}
+.hero-credit strong { color: var(--color-night); }
+.hero-credit a {
+  color: var(--color-verde-tecno);
+  font-weight: 600;
+  text-decoration-color: rgba(1, 115, 97, 0.4);
+}
+.hero-credit a[aria-disabled="true"] { opacity: 0.55; pointer-events: none; }
+
+/* =========================================================
+   Botones
+   ========================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.78rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+.btn-arrow, .btn-arrow-out { width: 16px; height: 16px; }
+
+.btn-primary {
+  background: var(--color-night);
+  color: var(--color-blanco-humo);
+}
+.btn-primary:hover, .btn-primary:focus-visible {
   background: var(--color-verde-tecno);
-  border-radius: 2px;
-  margin-top: var(--space-3);
+  color: var(--color-blanco-humo);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.btn-ghost-dark {
+  background: var(--color-card-bg);
+  color: var(--color-night);
+  border-color: var(--color-border);
+}
+.btn-ghost-dark:hover, .btn-ghost-dark:focus-visible {
+  background: var(--color-lavanda-soft);
+  border-color: var(--color-lavanda);
+  color: var(--color-night);
+  text-decoration: none;
+}
+.btn-ghost-dark[aria-disabled="true"] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.btn-on-dark {
+  background: var(--color-lavanda);
+  color: var(--color-night);
+}
+.btn-on-dark:hover, .btn-on-dark:focus-visible {
+  background: var(--color-blanco-humo);
+  color: var(--color-night);
+  transform: translateY(-1px);
 }
 
 /* =========================================================
-   Dashboard grid
+   Featured week card
    ========================================================= */
 
-#dashboard { padding-bottom: var(--space-6); }
-
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px;
-  gap: var(--space-4);
-  align-items: start;
-}
-.dashboard-main { display: grid; gap: var(--space-3); min-width: 0; }
-.dashboard-aside { position: sticky; top: calc(var(--navbar-h) + 16px); }
-
-@media (max-width: 1000px) {
-  .dashboard-grid { grid-template-columns: 1fr; }
-  .dashboard-aside { position: static; }
-}
-
-/* =========================================================
-   Hero card (próxima semana)
-   ========================================================= */
-
-.hero-card {
+.featured-card {
   position: relative;
   border-radius: var(--radius-xl);
   overflow: hidden;
   color: var(--color-blanco-humo);
   box-shadow: var(--color-shadow);
   isolation: isolate;
+  margin-top: var(--space-2);
 }
-.hero-card-bg {
+.featured-card-bg {
   position: absolute;
   inset: 0;
   background:
@@ -339,11 +436,9 @@ a:hover, a:focus-visible {
     linear-gradient(135deg, var(--color-night) 0%, var(--color-night-deep) 100%);
   z-index: -1;
 }
-.hero-card-content {
-  padding: clamp(var(--space-4), 4vw, var(--space-5));
-}
+.featured-card-content { padding: clamp(var(--space-4), 4vw, var(--space-5)); }
 
-.hero-card-top {
+.featured-card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -351,44 +446,42 @@ a:hover, a:focus-visible {
   margin-bottom: var(--space-3);
   flex-wrap: wrap;
 }
-.hero-card-eyebrow {
+.featured-card-eyebrow {
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   color: var(--color-lavanda);
 }
-.hero-card-countdown {
-  font-size: 0.75rem;
+.featured-card-countdown {
+  font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--color-blanco-humo);
   background: rgba(255, 255, 255, 0.10);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 0.3rem 0.7rem;
+  padding: 0.28rem 0.7rem;
   border-radius: 999px;
 }
-.hero-card-week {
+.featured-card-week {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   opacity: 0.78;
-  letter-spacing: 0.02em;
 }
-.hero-card-title {
+.featured-card-title {
   font-family: var(--font-display);
   margin: 0.2rem 0 0.4rem;
-  font-size: clamp(1.9rem, 4.2vw, 2.8rem);
-  line-height: 1.05;
+  font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+  line-height: 1.1;
   color: var(--color-blanco-humo);
-  letter-spacing: -0.01em;
 }
-.hero-card-topic {
+.featured-card-topic {
   margin: 0 0 var(--space-3);
   font-style: italic;
-  font-size: 1.08rem;
+  font-size: 1.05rem;
   color: var(--color-lavanda);
 }
-.hero-card-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
-.hero-chip {
+.featured-card-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
+.featured-chip {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -399,98 +492,57 @@ a:hover, a:focus-visible {
   font-size: 0.88rem;
   font-weight: 500;
 }
-.hero-chip svg { width: 16px; height: 16px; }
-
-.hero-card-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.7rem 1.2rem;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.92rem;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-}
-.btn-primary {
-  background: var(--color-lavanda);
-  color: var(--color-night);
-}
-.btn-primary:hover, .btn-primary:focus-visible {
-  background: var(--color-blanco-humo);
-  color: var(--color-night);
-  transform: translateY(-1px);
-}
-.btn-ghost {
-  background: transparent;
-  color: var(--color-blanco-humo);
-  border: 1px solid rgba(255,255,255,0.35);
-}
-.btn-ghost:hover, .btn-ghost:focus-visible {
-  background: rgba(255,255,255,0.10);
-  color: var(--color-blanco-humo);
-  text-decoration: none;
-}
+.featured-chip svg { width: 16px; height: 16px; }
+.featured-card-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
 
 /* =========================================================
-   Journey card
+   Progreso simple
    ========================================================= */
 
-.journey-card {
+.progress-block {
   background: var(--color-card-bg);
   border-radius: var(--radius-xl);
-  padding: clamp(var(--space-4), 3vw, var(--space-5));
-  box-shadow: var(--color-shadow);
+  padding: var(--space-4) clamp(var(--space-4), 3vw, var(--space-5));
   border: 1px solid var(--color-border);
+  box-shadow: var(--color-shadow-sm);
+  margin-top: var(--space-3);
 }
-
-.journey-head {
+.progress-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: var(--space-3);
   margin-bottom: var(--space-3);
+  flex-wrap: wrap;
 }
-.journey-eyebrow {
-  margin: 0 0 0.4rem;
+.progress-eyebrow {
+  margin: 0 0 0.3rem;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   color: var(--color-verde-tecno);
 }
-.journey-title {
+.progress-sub {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
   color: var(--color-night);
 }
-.journey-sub {
-  margin: 0.2rem 0 0;
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
-}
-.journey-percent {
+.progress-percent {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 3.6vw, 2.6rem);
   color: var(--color-verde-tecno);
   line-height: 1;
   white-space: nowrap;
 }
-
-.journey-bar {
+.progress-bar {
   position: relative;
-  height: 6px;
+  height: 8px;
   background: var(--color-blanco-humo);
   border-radius: 999px;
   overflow: hidden;
-  margin-bottom: var(--space-3);
 }
-.journey-bar-fill {
+.progress-bar-fill {
   position: absolute;
   top: 0; left: 0; bottom: 0;
   width: 0;
@@ -499,164 +551,11 @@ a:hover, a:focus-visible {
   transition: width 0.6s ease;
 }
 
-.journey-grid {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: var(--space-2);
-}
-@media (max-width: 720px) {
-  .journey-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-}
-
-.journey-tile {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: var(--space-1);
-  padding: var(--space-2) 0.7rem;
-  background: var(--color-pending-bg);
-  border: 1px solid var(--color-pending-border);
-  border-radius: var(--radius-md);
-  text-decoration: none;
-  color: var(--color-pending-text);
-  min-height: 88px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
-}
-.journey-tile:hover,
-.journey-tile:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: var(--color-shadow-sm);
-  text-decoration: none;
-}
-.journey-tile-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-.journey-tile-num { color: inherit; }
-.journey-tile-icon {
-  width: 16px; height: 16px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.8;
-}
-.journey-tile-icon svg { width: 100%; height: 100%; }
-.journey-tile-label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-.journey-tile[data-status="completed"] {
-  background: var(--color-menta);
-  border-color: rgba(1, 115, 97, 0.30);
-  color: var(--color-verde-tecno);
-}
-.journey-tile[data-status="in_progress"] {
-  background: var(--color-lavanda);
-  border-color: rgba(26, 56, 94, 0.20);
-  color: var(--color-night);
-}
-.journey-tile[data-status="intro"] {
-  background: var(--color-lavanda-soft);
-  border-color: rgba(26, 56, 94, 0.12);
-  color: var(--color-night);
-}
-
 /* =========================================================
-   Sidebar: Cronograma
+   Sección "Las 6 semanas"
    ========================================================= */
 
-.schedule-card {
-  background: var(--color-card-bg);
-  border-radius: var(--radius-xl);
-  padding: var(--space-4) var(--space-3);
-  box-shadow: var(--color-shadow);
-  border: 1px solid var(--color-border);
-}
-.schedule-head {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0 var(--space-2) var(--space-2);
-  margin-bottom: var(--space-2);
-  border-bottom: 1px solid var(--color-border);
-}
-.schedule-head h2 {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-verde-tecno);
-}
-.schedule-icon {
-  width: 18px; height: 18px;
-  color: var(--color-verde-tecno);
-}
-
-.schedule-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-}
-.schedule-item {
-  padding: 0.7rem var(--space-2);
-  border-radius: var(--radius-md);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  cursor: pointer;
-  background: transparent;
-  border: 1px solid transparent;
-  transition: background 0.18s ease, border-color 0.18s ease;
-  text-align: left;
-  font-family: inherit;
-  color: inherit;
-}
-.schedule-item:hover,
-.schedule-item:focus-visible {
-  background: var(--color-blanco-humo);
-  border-color: var(--color-border);
-}
-.schedule-item[data-status="completed"] { background: rgba(225, 253, 203, 0.35); }
-.schedule-item[data-status="in_progress"] {
-  background: var(--color-lavanda-soft);
-  border-color: rgba(26, 56, 94, 0.14);
-}
-.schedule-item-date {
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  font-weight: 600;
-}
-.schedule-item-title {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--color-night);
-  line-height: 1.3;
-}
-.schedule-item-topic {
-  font-size: 0.82rem;
-  color: var(--color-text-muted);
-  font-style: italic;
-}
-
-/* =========================================================
-   Section helpers
-   ========================================================= */
-
+.weeks { margin-top: var(--space-5); }
 .section-heading {
   margin-bottom: 0.4rem;
   font-size: clamp(1.8rem, 3vw, 2.4rem);
@@ -666,14 +565,8 @@ a:hover, a:focus-visible {
   color: var(--color-text-muted);
   max-width: 60ch;
 }
+.weeks-head { margin-bottom: var(--space-3); }
 
-.weeks-head { margin: var(--space-4) 0 var(--space-3); }
-
-/* =========================================================
-   Tarjetas semanales expandibles
-   ========================================================= */
-
-.weeks { padding-top: var(--space-3); }
 .week-list { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-3); }
 
 .week-card {
@@ -732,11 +625,16 @@ a:hover, a:focus-visible {
 .week-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
   color: var(--color-night);
   line-height: 1.25;
 }
-.week-topic { margin: 0; font-style: italic; color: var(--color-text-muted); font-size: 0.95rem; }
+.week-topic {
+  margin: 0;
+  font-style: italic;
+  color: var(--color-text-muted);
+  font-size: 0.98rem;
+}
 .week-date { margin: 0; font-size: 0.82rem; color: var(--color-text-muted); font-weight: 500; }
 
 .week-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; }
@@ -778,20 +676,6 @@ a:hover, a:focus-visible {
   color: var(--color-text-muted);
 }
 .week-card[data-open="true"] .chevron { transform: rotate(180deg); }
-
-.intro-tag {
-  display: inline-block;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  background: var(--color-lavanda-soft);
-  color: var(--color-night);
-  padding: 0.18rem 0.55rem;
-  border-radius: 999px;
-  margin-bottom: 4px;
-  width: max-content;
-}
 
 .week-details {
   display: grid;
@@ -903,31 +787,60 @@ a:hover, a:focus-visible {
 }
 
 /* =========================================================
-   About
+   Page header (Sobre / Contacto)
    ========================================================= */
 
-.about {
-  padding: var(--space-7) 0 var(--space-6);
-  background: #FFFFFF;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+.page-header {
+  padding: var(--space-6) 0 var(--space-4);
 }
-.about .section-heading { text-align: center; margin-bottom: var(--space-4); }
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  line-height: 1;
+  margin: 0;
+  color: var(--color-night);
+  letter-spacing: -0.02em;
+}
+.page-lead {
+  margin: 0.6rem 0 0;
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  max-width: 60ch;
+}
+.greeting-rule {
+  display: block;
+  width: 56px;
+  height: 3px;
+  background: var(--color-verde-tecno);
+  border-radius: 2px;
+  margin-top: var(--space-3);
+}
+
+/* =========================================================
+   About blocks (sobre.html)
+   ========================================================= */
 
 .about-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-4);
+  padding: var(--space-3) 0 var(--space-7);
 }
 @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; } }
 
 .about-block {
-  background: var(--color-blanco-humo);
+  background: var(--color-card-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-4);
+  box-shadow: var(--color-shadow-sm);
 }
-.about-block h3 { margin-top: 0; color: var(--color-night); }
+.about-block h2 {
+  margin-top: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+}
 .about-block p { font-size: 1rem; }
 
 .about-block--me {
@@ -953,7 +866,7 @@ a:hover, a:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #FFFFFF;
+  background: var(--color-blanco-humo);
   border: 1px solid var(--color-border);
   border-radius: 999px;
   padding: 0.5rem 1rem;
@@ -970,27 +883,15 @@ a:hover, a:focus-visible {
 .about-links a[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
 
 /* =========================================================
-   Contacto
+   Contacto (contacto.html)
    ========================================================= */
-
-.contact {
-  padding: var(--space-7) 0;
-  background: linear-gradient(180deg, var(--color-blanco-humo) 0%, #FFFFFF 100%);
-}
-.contact-inner { text-align: center; }
-.contact .section-heading { margin-bottom: 0.4rem; }
-.contact-lead {
-  max-width: 56ch;
-  margin: 0 auto var(--space-4);
-  color: var(--color-text-muted);
-}
 
 .contact-actions {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
   max-width: 720px;
-  margin: 0 auto;
+  margin: var(--space-3) 0 var(--space-7);
 }
 @media (max-width: 600px) { .contact-actions { grid-template-columns: 1fr; } }
 
@@ -1043,6 +944,7 @@ a:hover, a:focus-visible {
   background: var(--color-night-deep);
   color: var(--color-blanco-humo);
   padding: var(--space-4) 0;
+  margin-top: var(--space-6);
 }
 .footer-inner {
   display: flex;

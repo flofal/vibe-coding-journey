@@ -7,7 +7,9 @@ const translations = {
     "html.lang": "es",
     "a11y.skip": "Saltar al contenido",
 
-    "meta.title": "Vibe Coding · Recorrido autodidacta · Florencia Falco",
+    "meta.title.dashboard": "Vibe Coding · Recorrido autodidacta · Florencia Falco",
+    "meta.title.sobre": "Sobre · Vibe Coding · Florencia Falco",
+    "meta.title.contacto": "Contacto · Vibe Coding · Florencia Falco",
     "meta.description":
       "Bitácora pública del recorrido autodidacta de Florencia Falco por el sílabos público de Vibe Coding (T564A), HGSE, Karen Brennan, Fall 2025.",
 
@@ -17,40 +19,39 @@ const translations = {
     "nav.toggle.aria": "Abrir o cerrar el menú",
     "nav.lang.aria": "Cambiar idioma",
 
-    "greeting.title": "Vibe Coding.",
-    "greeting.sub": "Bitácora autodidacta · 2026",
+    "hero.title": "Estoy estudiando Vibe Coding en Harvard",
+    "hero.subtitle":
+      "(de forma autodidacta, siguiendo el sílabos público del curso T564A de Karen Brennan en la Harvard Graduate School of Education)",
+    "hero.badge.notEnrolled": "No matriculada",
+    "hero.badge.publicSyllabus": "Sílabos público",
+    "hero.badge.personal": "Recorrido personal",
+    "hero.description":
+      "Durante seis semanas voy a leer los textos del sílabos, construir los proyectos semanales y compartir cada lunes una nueva reflexión. Una bitácora honesta del recorrido, abierta a quien quiera leerla.",
+    "hero.cta.seeWeeks": "Ver las 6 semanas",
+    "hero.cta.gazette": "Leer el artículo del Harvard Gazette",
+    "hero.credit.text":
+      "Sílabos diseñado por <strong>Karen Brennan</strong> y Jacob Wolf · HGSE Fall 2025",
+    "hero.credit.link": "Ver sílabos original",
 
-    "hero.eyebrow.upcoming": "PRÓXIMA SEMANA",
-    "hero.eyebrow.today": "HOY ARRANCA",
-    "hero.eyebrow.live": "EN CURSO",
-    "hero.eyebrow.done": "RECORRIDO COMPLETO",
-    "hero.openWeek": "Abrir semana",
-    "hero.viewSchedule": "Ver cronograma",
-    "hero.countdown.daysOne": "EN {n} DÍA",
-    "hero.countdown.daysMany": "EN {n} DÍAS",
-    "hero.countdown.hoursOne": "EN {n} HORA",
-    "hero.countdown.hoursMany": "EN {n} HORAS",
-    "hero.countdown.now": "HOY",
-    "hero.countdown.weeks": "EN {n} SEMANAS",
-    "hero.heading.done": "Recorrido completo",
-    "hero.subtitle.done": "Las 6 semanas del sílabos están publicadas. Gracias por acompañar.",
+    "featured.eyebrow.upcoming": "PRÓXIMA SEMANA",
+    "featured.eyebrow.today": "HOY ARRANCA",
+    "featured.eyebrow.live": "EN CURSO",
+    "featured.eyebrow.done": "RECORRIDO COMPLETO",
+    "featured.openWeek": "Abrir semana",
+    "featured.countdown.daysOne": "EN {n} DÍA",
+    "featured.countdown.daysMany": "EN {n} DÍAS",
+    "featured.countdown.now": "HOY",
+    "featured.countdown.weeks": "EN {n} SEMANAS",
+    "featured.done.title": "Recorrido completo",
+    "featured.done.subtitle":
+      "Las 6 semanas del sílabos están publicadas. Gracias por acompañar.",
 
-    "journey.eyebrow": "TU RECORRIDO",
-    "journey.weekOf": "Semana {current} de 6",
-    "journey.preStart": "Empieza el 25 de mayo",
-    "journey.completedOf": "{done} de 6 completadas",
-    "journey.tile.completed": "Completada",
-    "journey.tile.current": "En curso",
-    "journey.tile.pending": "Próximamente",
-    "journey.tile.intro": "Presentación",
+    "progress.title": "Mi progreso",
+    "progress.completedOf": "{done} de 6 semanas completadas",
 
-    "schedule.heading": "Cronograma",
-    "schedule.viewWeek": "Ver",
-
-    "weeks.heading": "Las semanas",
+    "weeks.heading": "Las 6 semanas",
     "weeks.lead":
       "Cada lunes, una semana nueva. Hacé click en una tarjeta para ver lecturas, herramienta usada, proyecto y reflexión.",
-    "weeks.intro.tag": "Presentación",
     "weeks.week": "Semana",
     "weeks.expand.aria": "Expandir o colapsar la semana",
     "weeks.published": "Publicación: {date}",
@@ -74,13 +75,13 @@ const translations = {
     "card.linkedin": "Leer el post en LinkedIn",
     "card.readingNote.empty": "Sin nota todavía.",
 
-    "about.heading": "Sobre",
+    "page.sobre.title": "Sobre.",
+    "page.sobre.lead": "El proyecto y quién soy.",
     "about.project.heading": "Sobre este proyecto",
     "about.project.p1":
       "Este sitio documenta mi recorrido autodidacta por el sílabos público del módulo <strong>Vibe Coding (T564A)</strong> dictado por la profesora Karen Brennan en la Harvard Graduate School of Education en otoño de 2025.",
     "about.project.p2":
       "No estoy matriculada en Harvard. Estoy recorriendo el sílabos público por mi cuenta, leyendo los textos asignados, construyendo los proyectos semanales y compartiendo mis reflexiones en LinkedIn. Todo el crédito del diseño curricular corresponde a Karen Brennan y Jacob Wolf (HGSE).",
-
     "about.me.heading": "Sobre mí",
     "about.me.p1":
       "Soy <strong>Florencia Falco</strong>, profesora de Ciencias de la Computación y coordinadora de tecnología. Trabajo en un colegio privado en Montevideo y en un centro educativo que acompaña a jóvenes en contextos de vulnerabilidad socioeconómica.",
@@ -90,12 +91,11 @@ const translations = {
       "Me metí en este recorrido autodidacta porque el curso de Karen Brennan toca exactamente las preguntas que me hago todos los días: <em>¿cómo creamos con IA en lugar de solo consumirla?</em> <em>¿Qué cambia cuando la programación deja de ser una barrera técnica y se vuelve una conversación?</em> <em>¿Cómo llevamos esto al aula sin perder lo crítico?</em>",
     "about.me.p4":
       "Si sos docente y estás en el mismo lugar que yo —con ganas de avanzar pero sin saber por dónde empezar—, este espacio es para vos.",
-
     "about.link.syllabus": "Sílabos original (PDF)",
     "about.link.gazette": "Artículo del Harvard Gazette",
 
-    "contact.heading": "Contacto",
-    "contact.lead":
+    "page.contacto.title": "Contacto.",
+    "page.contacto.lead":
       "¿Sos docente, te resuenan estas preguntas, o querés sumarte a la conversación? Escribime.",
     "contact.email.label": "Escribime",
     "contact.linkedin.label": "LinkedIn",
@@ -121,7 +121,9 @@ const translations = {
     "html.lang": "en",
     "a11y.skip": "Skip to main content",
 
-    "meta.title": "Vibe Coding · A self-directed journey · Florencia Falco",
+    "meta.title.dashboard": "Vibe Coding · A self-directed journey · Florencia Falco",
+    "meta.title.sobre": "About · Vibe Coding · Florencia Falco",
+    "meta.title.contacto": "Contact · Vibe Coding · Florencia Falco",
     "meta.description":
       "Public log of Florencia Falco's self-directed journey through the public syllabus of Vibe Coding (T564A), HGSE, Karen Brennan, Fall 2025.",
 
@@ -131,40 +133,39 @@ const translations = {
     "nav.toggle.aria": "Open or close the menu",
     "nav.lang.aria": "Change language",
 
-    "greeting.title": "Vibe Coding.",
-    "greeting.sub": "A self-directed log · 2026",
+    "hero.title": "I'm studying Vibe Coding at Harvard",
+    "hero.subtitle":
+      "(on my own, following the public syllabus of T564A, taught by Karen Brennan at the Harvard Graduate School of Education)",
+    "hero.badge.notEnrolled": "Not enrolled",
+    "hero.badge.publicSyllabus": "Public syllabus",
+    "hero.badge.personal": "Personal journey",
+    "hero.description":
+      "For six weeks I'll read the assigned texts, build the weekly projects, and share a new reflection every Monday. An honest log of the journey, open to whoever wants to read it.",
+    "hero.cta.seeWeeks": "See the 6 weeks",
+    "hero.cta.gazette": "Read the Harvard Gazette article",
+    "hero.credit.text":
+      "Syllabus designed by <strong>Karen Brennan</strong> and Jacob Wolf · HGSE Fall 2025",
+    "hero.credit.link": "View original syllabus",
 
-    "hero.eyebrow.upcoming": "UP NEXT",
-    "hero.eyebrow.today": "STARTS TODAY",
-    "hero.eyebrow.live": "IN PROGRESS",
-    "hero.eyebrow.done": "JOURNEY COMPLETE",
-    "hero.openWeek": "Open week",
-    "hero.viewSchedule": "View schedule",
-    "hero.countdown.daysOne": "IN {n} DAY",
-    "hero.countdown.daysMany": "IN {n} DAYS",
-    "hero.countdown.hoursOne": "IN {n} HOUR",
-    "hero.countdown.hoursMany": "IN {n} HOURS",
-    "hero.countdown.now": "TODAY",
-    "hero.countdown.weeks": "IN {n} WEEKS",
-    "hero.heading.done": "Journey complete",
-    "hero.subtitle.done": "All 6 syllabus weeks are published. Thanks for following along.",
+    "featured.eyebrow.upcoming": "UP NEXT",
+    "featured.eyebrow.today": "STARTS TODAY",
+    "featured.eyebrow.live": "IN PROGRESS",
+    "featured.eyebrow.done": "JOURNEY COMPLETE",
+    "featured.openWeek": "Open week",
+    "featured.countdown.daysOne": "IN {n} DAY",
+    "featured.countdown.daysMany": "IN {n} DAYS",
+    "featured.countdown.now": "TODAY",
+    "featured.countdown.weeks": "IN {n} WEEKS",
+    "featured.done.title": "Journey complete",
+    "featured.done.subtitle":
+      "All 6 syllabus weeks are published. Thanks for following along.",
 
-    "journey.eyebrow": "YOUR JOURNEY",
-    "journey.weekOf": "Week {current} of 6",
-    "journey.preStart": "Starts May 25",
-    "journey.completedOf": "{done} of 6 completed",
-    "journey.tile.completed": "Completed",
-    "journey.tile.current": "In progress",
-    "journey.tile.pending": "Coming soon",
-    "journey.tile.intro": "Kickoff",
+    "progress.title": "My progress",
+    "progress.completedOf": "{done} of 6 weeks completed",
 
-    "schedule.heading": "Schedule",
-    "schedule.viewWeek": "View",
-
-    "weeks.heading": "The weeks",
+    "weeks.heading": "The 6 weeks",
     "weeks.lead":
-      "A new week every Monday. Click a card to see readings, tools, the project, and the weekly reflection.",
-    "weeks.intro.tag": "Kickoff",
+      "A new week every Monday. Click a card to see readings, the tool used, the project, and the weekly reflection.",
     "weeks.week": "Week",
     "weeks.expand.aria": "Expand or collapse this week",
     "weeks.published": "Published: {date}",
@@ -188,13 +189,13 @@ const translations = {
     "card.linkedin": "Read the LinkedIn post",
     "card.readingNote.empty": "No note yet.",
 
-    "about.heading": "About",
+    "page.sobre.title": "About.",
+    "page.sobre.lead": "The project and who I am.",
     "about.project.heading": "About this project",
     "about.project.p1":
       "This site documents my self-directed journey through the public syllabus of <strong>Vibe Coding (T564A)</strong>, taught by Professor Karen Brennan at the Harvard Graduate School of Education in Fall 2025.",
     "about.project.p2":
       "I am not enrolled at Harvard. I am working through the public syllabus on my own — reading the assigned texts, building the weekly projects, and sharing my reflections on LinkedIn. All credit for the curriculum design belongs to Karen Brennan and Jacob Wolf (HGSE).",
-
     "about.me.heading": "About me",
     "about.me.p1":
       "I'm <strong>Florencia Falco</strong>, a Computer Science teacher and technology coordinator. I work at a private school in Montevideo, Uruguay, and at an educational center supporting young people in contexts of socioeconomic vulnerability.",
@@ -204,12 +205,11 @@ const translations = {
       "I started this self-directed journey because Karen Brennan's course touches exactly the questions I ask myself every day: <em>how do we create with AI instead of only consuming it?</em> <em>What changes when programming stops being a technical barrier and becomes a conversation?</em> <em>How do we bring this into the classroom without losing the critical lens?</em>",
     "about.me.p4":
       "If you're a teacher in the same place I am — eager to move forward but unsure where to start — this space is for you.",
-
     "about.link.syllabus": "Original syllabus (PDF)",
     "about.link.gazette": "Harvard Gazette article",
 
-    "contact.heading": "Get in touch",
-    "contact.lead":
+    "page.contacto.title": "Contact.",
+    "page.contacto.lead":
       "Are you a teacher, do these questions resonate, or do you want to join the conversation? Write me.",
     "contact.email.label": "Write me",
     "contact.linkedin.label": "LinkedIn",
