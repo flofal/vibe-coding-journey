@@ -277,7 +277,7 @@ a:hover, a:focus-visible {
 }
 .hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: clamp(2rem, 4vw, 4rem);
   align-items: center;
 }
@@ -289,21 +289,33 @@ a:hover, a:focus-visible {
 
 .hero-photo {
   margin: 0;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--color-shadow);
-  background: var(--color-card-bg);
+  max-width: 500px;
+  margin-left: auto;
+  width: 100%;
 }
 .hero-photo img {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 5 / 6;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  object-position: center 35%;
+  object-position: center center;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--color-shadow);
+  background: var(--color-card-bg);
+}
+.hero-photo-caption {
+  display: block;
+  margin: 0.55rem 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  text-align: right;
+  font-style: italic;
 }
 @media (max-width: 920px) {
-  .hero-photo img { aspect-ratio: 16 / 10; object-position: center 30%; }
+  .hero-photo { max-width: 100%; margin-left: 0; }
+  .hero-photo img { aspect-ratio: 16 / 10; }
 }
 
 .hero-badges {
@@ -342,6 +354,9 @@ a:hover, a:focus-visible {
   color: var(--color-night);
   letter-spacing: -0.02em;
   max-width: 14ch;
+}
+.hero-title-accent {
+  color: var(--color-lavanda);
 }
 @media (max-width: 920px) {
   .hero-title { max-width: 22ch; }
@@ -853,10 +868,6 @@ a:hover, a:focus-visible {
 
 .about-hero {
   margin: var(--space-3) 0 var(--space-4);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--color-shadow);
-  background: var(--color-card-bg);
 }
 .about-hero-img {
   display: block;
@@ -864,6 +875,9 @@ a:hover, a:focus-visible {
   aspect-ratio: 16 / 7;
   object-fit: cover;
   object-position: center 30%;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--color-shadow);
+  background: var(--color-card-bg);
 }
 @media (max-width: 600px) {
   .about-hero-img { aspect-ratio: 4 / 3; }

@@ -19,7 +19,8 @@ const translations = {
     "nav.toggle.aria": "Abrir o cerrar el menú",
     "nav.lang.aria": "Cambiar idioma",
 
-    "hero.title": "Estoy estudiando Vibe Coding en Harvard",
+    "hero.title": "Estoy estudiando <span class=\"hero-title-accent\">Vibe Coding</span> en <span class=\"hero-title-accent\">Harvard</span>",
+    "hero.photo.caption": "Imagen compuesta · montaje",
     "hero.subtitle":
       "(de forma autodidacta, siguiendo el plan de estudio público del curso T564A de Karen Brennan en la Harvard Graduate School of Education)",
     "hero.badge.notEnrolled": "No matriculada",
@@ -133,7 +134,8 @@ const translations = {
     "nav.toggle.aria": "Open or close the menu",
     "nav.lang.aria": "Change language",
 
-    "hero.title": "I'm studying Vibe Coding at Harvard",
+    "hero.title": "I'm studying <span class=\"hero-title-accent\">Vibe Coding</span> at <span class=\"hero-title-accent\">Harvard</span>",
+    "hero.photo.caption": "Composite photo · montage",
     "hero.subtitle":
       "(on my own, following the public syllabus of T564A, taught by Karen Brennan at the Harvard Graduate School of Education)",
     "hero.badge.notEnrolled": "Not enrolled",
