@@ -55,7 +55,7 @@
     <footer class="site-footer" role="contentinfo">
       <div class="container footer-inner">
         <p class="footer-credit" data-i18n="footer.credit">
-          Sílabos original: Karen Brennan &amp; Jacob Wolf · HGSE Fall 2025
+          Plan de estudio original: Karen Brennan &amp; Jacob Wolf · HGSE Fall 2025
         </p>
         <p class="footer-author">
           <span data-i18n="footer.author">Diseño y desarrollo: Florencia Falco</span>

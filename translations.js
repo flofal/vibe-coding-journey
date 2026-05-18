@@ -11,7 +11,7 @@ const translations = {
     "meta.title.sobre": "Sobre · Vibe Coding · Florencia Falco",
     "meta.title.contacto": "Contacto · Vibe Coding · Florencia Falco",
     "meta.description":
-      "Bitácora pública del recorrido autodidacta de Florencia Falco por el sílabos público de Vibe Coding (T564A), HGSE, Karen Brennan, Fall 2025.",
+      "Bitácora pública del recorrido autodidacta de Florencia Falco por el plan de estudio público de Vibe Coding (T564A), HGSE, Karen Brennan, Fall 2025.",
 
     "nav.dashboard": "Dashboard",
     "nav.about": "Sobre",
@@ -21,17 +21,17 @@ const translations = {
 
     "hero.title": "Estoy estudiando Vibe Coding en Harvard",
     "hero.subtitle":
-      "(de forma autodidacta, siguiendo el sílabos público del curso T564A de Karen Brennan en la Harvard Graduate School of Education)",
+      "(de forma autodidacta, siguiendo el plan de estudio público del curso T564A de Karen Brennan en la Harvard Graduate School of Education)",
     "hero.badge.notEnrolled": "No matriculada",
-    "hero.badge.publicSyllabus": "Sílabos público",
+    "hero.badge.publicSyllabus": "Plan de estudio público",
     "hero.badge.personal": "Recorrido personal",
     "hero.description":
-      "Durante seis semanas voy a leer los textos del sílabos, construir los proyectos semanales y compartir cada lunes una nueva reflexión. Una bitácora honesta del recorrido, abierta a quien quiera leerla.",
+      "Durante seis semanas voy a leer los textos del plan de estudio, construir los proyectos semanales y compartir cada lunes una nueva reflexión. Una bitácora honesta del recorrido, abierta a quien quiera leerla.",
     "hero.cta.seeWeeks": "Ver las 6 semanas",
     "hero.cta.gazette": "Leer el artículo del Harvard Gazette",
     "hero.credit.text":
-      "Sílabos diseñado por <strong>Karen Brennan</strong> y Jacob Wolf · HGSE Fall 2025",
-    "hero.credit.link": "Ver sílabos original",
+      "Plan de estudio diseñado por <strong>Karen Brennan</strong> y Jacob Wolf · HGSE Fall 2025",
+    "hero.credit.link": "Ver plan de estudio original",
 
     "featured.eyebrow.upcoming": "PRÓXIMA SEMANA",
     "featured.eyebrow.today": "HOY ARRANCA",
@@ -44,7 +44,7 @@ const translations = {
     "featured.countdown.weeks": "EN {n} SEMANAS",
     "featured.done.title": "Recorrido completo",
     "featured.done.subtitle":
-      "Las 6 semanas del sílabos están publicadas. Gracias por acompañar.",
+      "Las 6 semanas del plan de estudio están publicadas. Gracias por acompañar.",
 
     "progress.title": "Mi progreso",
     "progress.completedOf": "{done} de 6 semanas completadas",
@@ -79,9 +79,9 @@ const translations = {
     "page.sobre.lead": "El proyecto y quién soy.",
     "about.project.heading": "Sobre este proyecto",
     "about.project.p1":
-      "Este sitio documenta mi recorrido autodidacta por el sílabos público del módulo <strong>Vibe Coding (T564A)</strong> dictado por la profesora Karen Brennan en la Harvard Graduate School of Education en otoño de 2025.",
+      "Este sitio documenta mi recorrido autodidacta por el plan de estudio público del módulo <strong>Vibe Coding (T564A)</strong> dictado por la profesora Karen Brennan en la Harvard Graduate School of Education en otoño de 2025.",
     "about.project.p2":
-      "No estoy matriculada en Harvard. Estoy recorriendo el sílabos público por mi cuenta, leyendo los textos asignados, construyendo los proyectos semanales y compartiendo mis reflexiones en LinkedIn. Todo el crédito del diseño curricular corresponde a Karen Brennan y Jacob Wolf (HGSE).",
+      "No estoy matriculada en Harvard. Estoy recorriendo el plan de estudio público por mi cuenta, leyendo los textos asignados, construyendo los proyectos semanales y compartiendo mis reflexiones en LinkedIn. Todo el crédito del diseño curricular corresponde a Karen Brennan y Jacob Wolf (HGSE).",
     "about.me.heading": "Sobre mí",
     "about.me.p1":
       "Soy <strong>Florencia Falco</strong>, profesora de Ciencias de la Computación y coordinadora de tecnología. Trabajo en un colegio privado en Montevideo y en un centro educativo que acompaña a jóvenes en contextos de vulnerabilidad socioeconómica.",
@@ -91,7 +91,7 @@ const translations = {
       "Me metí en este recorrido autodidacta porque el curso de Karen Brennan toca exactamente las preguntas que me hago todos los días: <em>¿cómo creamos con IA en lugar de solo consumirla?</em> <em>¿Qué cambia cuando la programación deja de ser una barrera técnica y se vuelve una conversación?</em> <em>¿Cómo llevamos esto al aula sin perder lo crítico?</em>",
     "about.me.p4":
       "Si sos docente y estás en el mismo lugar que yo —con ganas de avanzar pero sin saber por dónde empezar—, este espacio es para vos.",
-    "about.link.syllabus": "Sílabos original (PDF)",
+    "about.link.syllabus": "Plan de estudio original (PDF)",
     "about.link.gazette": "Artículo del Harvard Gazette",
 
     "page.contacto.title": "Contacto.",
@@ -101,7 +101,7 @@ const translations = {
     "contact.linkedin.label": "LinkedIn",
 
     "footer.credit":
-      "Sílabos original: Karen Brennan & Jacob Wolf · HGSE Fall 2025",
+      "Plan de estudio original: Karen Brennan & Jacob Wolf · HGSE Fall 2025",
     "footer.author": "Diseño y desarrollo: Florencia Falco",
 
     "months.long": [

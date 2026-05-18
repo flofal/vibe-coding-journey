@@ -1,8 +1,8 @@
 # Vibe Coding · Recorrido autodidacta
 
-Dashboard estático y bilingüe (ES/EN) que documenta el recorrido de **Florencia Falco** por el sílabos público del módulo *Vibe Coding (T564A)* dictado por **Karen Brennan** en la Harvard Graduate School of Education (Fall 2025).
+Dashboard estático y bilingüe (ES/EN) que documenta el recorrido de **Florencia Falco** por el plan de estudio público del módulo *Vibe Coding (T564A)* dictado por **Karen Brennan** en la Harvard Graduate School of Education (Fall 2025).
 
-> No es una matriculación en Harvard. Es una bitácora pública de un recorrido autodidacta por un sílabos abierto. Todo el crédito del diseño curricular corresponde a Karen Brennan y Jacob Wolf (HGSE).
+> No es una matriculación en Harvard. Es una bitácora pública de un recorrido autodidacta por un plan de estudio abierto. Todo el crédito del diseño curricular corresponde a Karen Brennan y Jacob Wolf (HGSE).
 
 ## Stack
 
@@ -63,5 +63,5 @@ ES por defecto. Toggle visible en el header. La elección se persiste en `localS
 
 ## Créditos
 
-Sílabos original: **Karen Brennan & Jacob Wolf** · HGSE Fall 2025.
+Plan de estudio original: **Karen Brennan & Jacob Wolf** · HGSE Fall 2025.
 Diseño y desarrollo del dashboard: **Florencia Falco**.
