@@ -36,43 +36,54 @@
 
   <main id="main">
     <div class="container">
-      <figure class="about-hero">
-        <img class="about-hero-img"
-             src="assets/flo.jpg"
-             width="1600" height="900"
-             alt="Florencia Falco en el campus de la Harvard Graduate School of Education, junto al escudo de Harvard." />
-        <figcaption class="hero-photo-caption" data-i18n="hero.photo.caption">Imagen compuesta · montaje</figcaption>
-      </figure>
+      <section class="about-blocks" aria-label="Sobre el proyecto y sobre mí">
 
-      <section class="about-grid" aria-label="Sobre el proyecto y sobre mí">
-        <article class="about-block">
-          <h2 data-i18n="about.project.heading">Sobre este proyecto</h2>
-          <p data-i18n-html="about.project.p1"></p>
-          <p data-i18n-html="about.project.p2"></p>
+        <article class="about-block about-block--project">
+          <div class="about-block-text">
+            <h2 data-i18n="about.project.heading">Sobre este proyecto</h2>
+            <p data-i18n-html="about.project.p1"></p>
+            <p data-i18n-html="about.project.p2"></p>
+          </div>
 
-          <ul class="about-links">
-            <li>
-              <a id="link-syllabus" href="#" target="_blank" rel="noopener noreferrer">
-                <span aria-hidden="true">📄</span>
-                <span data-i18n="about.link.syllabus">Plan de estudio original (PDF)</span>
-              </a>
-            </li>
-            <li>
-              <a id="link-gazette" href="#" target="_blank" rel="noopener noreferrer">
-                <span aria-hidden="true">📰</span>
-                <span data-i18n="about.link.gazette">Artículo del Harvard Gazette</span>
-              </a>
-            </li>
-          </ul>
+          <aside class="about-block-aside">
+            <ul class="about-links">
+              <li>
+                <a id="link-syllabus" href="#" target="_blank" rel="noopener noreferrer">
+                  <span aria-hidden="true">📄</span>
+                  <span data-i18n="about.link.syllabus">Plan de estudio original (PDF)</span>
+                </a>
+              </li>
+              <li>
+                <a id="link-gazette" href="#" target="_blank" rel="noopener noreferrer">
+                  <span aria-hidden="true">📰</span>
+                  <span data-i18n="about.link.gazette">Artículo del Harvard Gazette</span>
+                </a>
+              </li>
+            </ul>
+
+            <p class="about-credit">
+              <span data-i18n-html="about.credit.text"></span>
+              · <a id="about-brennan-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="about.credit.link">Ver en Harvard HGSE</a>
+            </p>
+          </aside>
         </article>
 
         <article class="about-block about-block--me">
-          <h2 data-i18n="about.me.heading">Sobre mí</h2>
-          <p data-i18n-html="about.me.p1"></p>
-          <p data-i18n-html="about.me.p2"></p>
-          <p data-i18n-html="about.me.p3"></p>
-          <p class="about-me-call" data-i18n-html="about.me.p4"></p>
+          <div class="about-block-text">
+            <h2 data-i18n="about.me.heading">Sobre mí</h2>
+            <p data-i18n-html="about.me.p1"></p>
+            <p data-i18n-html="about.me.p2"></p>
+            <p data-i18n-html="about.me.p3"></p>
+            <p class="about-me-call" data-i18n-html="about.me.p4"></p>
+          </div>
+
+          <figure class="about-block-photo">
+            <img src="assets/flo2.jpg"
+                 width="1280" height="1920"
+                 alt="Florencia Falco sosteniendo un kit de robótica educativa." />
+          </figure>
         </article>
+
       </section>
     </div>
   </main>

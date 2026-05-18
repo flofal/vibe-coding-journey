@@ -23,9 +23,8 @@
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Saltar al contenido</a>
     <nav class="navbar" role="navigation" aria-label="Navegación principal">
       <div class="navbar-inner">
-        <a class="navbar-brand" href="index.html" aria-label="Florencia Falco — Vibe Coding">
-          <img class="navbar-logo" src="assets/logos/logo-ff.png" alt="" />
-          <span class="navbar-name">Florencia Falco</span>
+        <a class="navbar-brand" href="index.html" aria-label="Florencia Falco — Inicio">
+          <img class="navbar-logo" src="assets/logos/logo-ff.png" alt="Florencia Falco" />
         </a>
 
         <button type="button" class="nav-toggle" id="nav-toggle"
@@ -58,8 +57,8 @@
           Plan de estudio original: Karen Brennan &amp; Jacob Wolf · HGSE Fall 2025
         </p>
         <p class="footer-author">
-          <span data-i18n="footer.author">Diseño y desarrollo: Florencia Falco</span>
-          · <span id="footer-year">2026</span>
+          <span data-i18n="footer.author">Proyecto personal</span>
+          - <span id="footer-year">2026</span>
         </p>
       </div>
     </footer>
@@ -450,7 +449,7 @@
       "link-syllabus": state.data.links.syllabusPdf,
       "link-gazette": state.data.links.gazetteArticle,
       "hero-syllabus-link": state.data.links.syllabusPdf,
-      "hero-gazette-link": state.data.links.gazetteArticle
+      "about-brennan-link": state.data.links.karenBrennanProfile
     };
     Object.keys(map).forEach(function (id) {
       const a = document.getElementById(id);

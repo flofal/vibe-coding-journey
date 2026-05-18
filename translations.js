@@ -19,8 +19,8 @@ const translations = {
     "nav.toggle.aria": "Abrir o cerrar el menú",
     "nav.lang.aria": "Cambiar idioma",
 
-    "hero.title": "Estoy estudiando <span class=\"hero-title-accent\">Vibe Coding</span> en <span class=\"hero-title-accent hero-title-accent--crimson\">Harvard</span>",
-    "hero.photo.caption": "Imagen compuesta · montaje",
+    "hero.title": "Estoy estudiando Vibe Coding en <span class=\"hero-title-accent hero-title-accent--crimson\">Harvard</span>",
+    "hero.photo.caption": "Montaje realizado en Canva",
     "hero.subtitle":
       "(de forma autodidacta, siguiendo el plan de estudio público del curso T564A de Karen Brennan en la Harvard Graduate School of Education)",
     "hero.badge.notEnrolled": "No matriculada",
@@ -100,7 +100,11 @@ const translations = {
 
     "footer.credit":
       "Plan de estudio original: Karen Brennan & Jacob Wolf · HGSE Fall 2025",
-    "footer.author": "Diseño y desarrollo: Florencia Falco",
+    "footer.author": "Proyecto personal",
+
+    "about.credit.text":
+      "Plan de estudio diseñado por <strong>Karen Brennan</strong> y Jacob Wolf (HGSE) · Fall 2025",
+    "about.credit.link": "Ver en Harvard HGSE",
 
     "months.long": [
       "enero", "febrero", "marzo", "abril", "mayo", "junio",
@@ -131,8 +135,8 @@ const translations = {
     "nav.toggle.aria": "Open or close the menu",
     "nav.lang.aria": "Change language",
 
-    "hero.title": "I'm studying <span class=\"hero-title-accent\">Vibe Coding</span> at <span class=\"hero-title-accent hero-title-accent--crimson\">Harvard</span>",
-    "hero.photo.caption": "Composite photo · montage",
+    "hero.title": "I'm studying Vibe Coding at <span class=\"hero-title-accent hero-title-accent--crimson\">Harvard</span>",
+    "hero.photo.caption": "Made in Canva",
     "hero.subtitle":
       "(on my own, following the public syllabus of T564A, taught by Karen Brennan at the Harvard Graduate School of Education)",
     "hero.badge.notEnrolled": "Not enrolled",
@@ -212,7 +216,11 @@ const translations = {
 
     "footer.credit":
       "Original syllabus: Karen Brennan & Jacob Wolf · HGSE Fall 2025",
-    "footer.author": "Design & development: Florencia Falco",
+    "footer.author": "Personal project",
+
+    "about.credit.text":
+      "Syllabus designed by <strong>Karen Brennan</strong> and Jacob Wolf (HGSE) · Fall 2025",
+    "about.credit.link": "View on Harvard HGSE",
 
     "months.long": [
       "January", "February", "March", "April", "May", "June",
