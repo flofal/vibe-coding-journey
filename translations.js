@@ -19,7 +19,7 @@ const translations = {
     "nav.toggle.aria": "Abrir o cerrar el menú",
     "nav.lang.aria": "Cambiar idioma",
 
-    "hero.title": "Estoy estudiando <span class=\"hero-title-accent\">Vibe Coding</span> en <span class=\"hero-title-accent\">Harvard</span>",
+    "hero.title": "Estoy estudiando <span class=\"hero-title-accent\">Vibe Coding</span> en <span class=\"hero-title-accent hero-title-accent--crimson\">Harvard</span>",
     "hero.photo.caption": "Imagen compuesta · montaje",
     "hero.subtitle":
       "(de forma autodidacta, siguiendo el plan de estudio público del curso T564A de Karen Brennan en la Harvard Graduate School of Education)",
@@ -29,10 +29,7 @@ const translations = {
     "hero.description":
       "Durante seis semanas voy a leer los textos del plan de estudio, construir los proyectos semanales y compartir cada lunes una nueva reflexión. Una bitácora honesta del recorrido, abierta a quien quiera leerla.",
     "hero.cta.seeWeeks": "Ver las 6 semanas",
-    "hero.cta.gazette": "Leer el artículo del Harvard Gazette",
-    "hero.credit.text":
-      "Plan de estudio diseñado por <strong>Karen Brennan</strong> y Jacob Wolf · HGSE Fall 2025",
-    "hero.credit.link": "Ver plan de estudio original",
+    "hero.cta.syllabus": "Ver plan de estudio original",
 
     "featured.eyebrow.upcoming": "PRÓXIMA SEMANA",
     "featured.eyebrow.today": "HOY ARRANCA",
@@ -134,7 +131,7 @@ const translations = {
     "nav.toggle.aria": "Open or close the menu",
     "nav.lang.aria": "Change language",
 
-    "hero.title": "I'm studying <span class=\"hero-title-accent\">Vibe Coding</span> at <span class=\"hero-title-accent\">Harvard</span>",
+    "hero.title": "I'm studying <span class=\"hero-title-accent\">Vibe Coding</span> at <span class=\"hero-title-accent hero-title-accent--crimson\">Harvard</span>",
     "hero.photo.caption": "Composite photo · montage",
     "hero.subtitle":
       "(on my own, following the public syllabus of T564A, taught by Karen Brennan at the Harvard Graduate School of Education)",
@@ -144,10 +141,7 @@ const translations = {
     "hero.description":
       "For six weeks I'll read the assigned texts, build the weekly projects, and share a new reflection every Monday. An honest log of the journey, open to whoever wants to read it.",
     "hero.cta.seeWeeks": "See the 6 weeks",
-    "hero.cta.gazette": "Read the Harvard Gazette article",
-    "hero.credit.text":
-      "Syllabus designed by <strong>Karen Brennan</strong> and Jacob Wolf · HGSE Fall 2025",
-    "hero.credit.link": "View original syllabus",
+    "hero.cta.syllabus": "View original syllabus",
 
     "featured.eyebrow.upcoming": "UP NEXT",
     "featured.eyebrow.today": "STARTS TODAY",
