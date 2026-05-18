@@ -48,7 +48,7 @@
   --space-6: 3.6rem;
   --space-7: 5rem;
 
-  --max-width: 1080px;
+  --max-width: 1240px;
   --navbar-h: 68px;
 }
 
@@ -272,20 +272,38 @@ a:hover, a:focus-visible {
    ========================================================= */
 
 .hero {
-  padding: var(--space-7) 0 var(--space-5);
+  padding: var(--space-6) 0 var(--space-5);
   background: var(--color-blanco-humo);
 }
 .hero-inner {
-  text-align: left;
-  max-width: 800px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+@media (max-width: 920px) {
+  .hero-inner { grid-template-columns: 1fr; }
 }
 
-.hero-seal {
+.hero-text { min-width: 0; }
+
+.hero-photo {
+  margin: 0;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--color-shadow);
+  background: var(--color-card-bg);
+}
+.hero-photo img {
   display: block;
-  width: clamp(72px, 8vw, 96px);
+  width: 100%;
   height: auto;
-  margin: 0 0 var(--space-3);
-  /* sin filtros: respeta los colores oficiales del escudo */
+  aspect-ratio: 5 / 6;
+  object-fit: cover;
+  object-position: center 35%;
+}
+@media (max-width: 920px) {
+  .hero-photo img { aspect-ratio: 16 / 10; object-position: center 30%; }
 }
 
 .hero-badges {
@@ -318,12 +336,15 @@ a:hover, a:focus-visible {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.3rem, 5.6vw, 4rem);
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
   line-height: 1.04;
   margin: 0 0 var(--space-3);
   color: var(--color-night);
   letter-spacing: -0.02em;
-  max-width: 18ch;
+  max-width: 14ch;
+}
+@media (max-width: 920px) {
+  .hero-title { max-width: 22ch; }
 }
 .hero-subtitle {
   margin: 0 0 var(--space-4);

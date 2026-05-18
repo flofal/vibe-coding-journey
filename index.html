@@ -36,38 +36,42 @@
   <!-- ========================== Hero ========================== -->
   <header class="hero" id="top" role="banner">
     <div class="container hero-inner">
-      <img class="hero-seal" src="assets/logos/harvard.png" alt="Escudo de Harvard University" />
+      <div class="hero-text">
+        <div class="hero-badges" aria-label="Transparencia del proyecto">
+          <span class="hero-badge" data-i18n="hero.badge.notEnrolled">No matriculada</span>
+          <span class="hero-badge" data-i18n="hero.badge.publicSyllabus">Plan de estudio público</span>
+          <span class="hero-badge" data-i18n="hero.badge.personal">Recorrido personal</span>
+        </div>
 
-      <div class="hero-badges" aria-label="Transparencia del proyecto">
-        <span class="hero-badge" data-i18n="hero.badge.notEnrolled">No matriculada</span>
-        <span class="hero-badge" data-i18n="hero.badge.publicSyllabus">Plan de estudio público</span>
-        <span class="hero-badge" data-i18n="hero.badge.personal">Recorrido personal</span>
+        <h1 class="hero-title" data-i18n="hero.title">Estoy estudiando Vibe Coding en Harvard</h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">
+          (de forma autodidacta, siguiendo el plan de estudio público del curso T564A de Karen Brennan en la Harvard Graduate School of Education)
+        </p>
+
+        <p class="hero-description" data-i18n="hero.description">
+          Durante seis semanas voy a leer los textos del plan de estudio, construir los proyectos semanales y compartir cada lunes una nueva reflexión. Una bitácora honesta del recorrido, abierta a quien quiera leerla.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#weeks">
+            <span data-i18n="hero.cta.seeWeeks">Ver las 6 semanas</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-arrow"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost-dark" id="hero-gazette-link" href="#" target="_blank" rel="noopener noreferrer">
+            <span data-i18n="hero.cta.gazette">Leer el artículo del Harvard Gazette</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-arrow-out"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <p class="hero-credit">
+          <span data-i18n-html="hero.credit.text"></span>
+          · <a id="hero-syllabus-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="hero.credit.link">Ver plan de estudio original</a>
+        </p>
       </div>
 
-      <h1 class="hero-title" data-i18n="hero.title">Estoy estudiando Vibe Coding en Harvard</h1>
-      <p class="hero-subtitle" data-i18n="hero.subtitle">
-        (de forma autodidacta, siguiendo el plan de estudio público del curso T564A de Karen Brennan en la Harvard Graduate School of Education)
-      </p>
-
-      <p class="hero-description" data-i18n="hero.description">
-        Durante seis semanas voy a leer los textos del plan de estudio, construir los proyectos semanales y compartir cada lunes una nueva reflexión. Una bitácora honesta del recorrido, abierta a quien quiera leerla.
-      </p>
-
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#weeks">
-          <span data-i18n="hero.cta.seeWeeks">Ver las 6 semanas</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-arrow"><polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
-        </a>
-        <a class="btn btn-ghost-dark" id="hero-gazette-link" href="#" target="_blank" rel="noopener noreferrer">
-          <span data-i18n="hero.cta.gazette">Leer el artículo del Harvard Gazette</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-arrow-out"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-
-      <p class="hero-credit">
-        <span data-i18n-html="hero.credit.text"></span>
-        · <a id="hero-syllabus-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="hero.credit.link">Ver plan de estudio original</a>
-      </p>
+      <figure class="hero-photo">
+        <img src="assets/flo.jpg" alt="Florencia Falco en el campus de la Harvard Graduate School of Education, junto al escudo de Harvard." />
+      </figure>
     </div>
   </header>
 
