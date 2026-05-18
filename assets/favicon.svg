@@ -1,5 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Florencia Falco">
+  <!-- Cuadrado redondeado, Azul night de la paleta -->
   <rect width="64" height="64" rx="14" fill="#1A385E"/>
-  <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle"
-        font-family="Georgia, serif" font-weight="700" font-size="34" fill="#D7CAFF">F</text>
+
+  <!-- "F" en estilo geométrico inspirado en DK Rotorua,
+       construida con paths para no depender de fuentes del sistema. -->
+  <g fill="#F5F5F5">
+    <!-- Asta vertical -->
+    <rect x="19" y="14" width="6.5" height="36"/>
+    <!-- Brazo superior (más ancho) -->
+    <rect x="19" y="14" width="28" height="6.5"/>
+    <!-- Brazo medio (más corto) -->
+    <rect x="19" y="29" width="20" height="6"/>
+  </g>
+
+  <!-- Punto lavanda: guiño a las "O" de DK Rotorua (las "O" del logo tienen un punto interior).  -->
+  <circle cx="47" cy="48" r="3.2" fill="#D7CAFF"/>
 </svg>
