@@ -82,13 +82,15 @@ const translations = {
       "No estoy matriculada en Harvard. Estoy recorriendo el plan de estudio público por mi cuenta, leyendo los textos asignados, construyendo los proyectos semanales y compartiendo mis reflexiones en LinkedIn. Todo el crédito del diseño curricular corresponde a Karen Brennan y Jacob Wolf (HGSE).",
     "about.me.heading": "Sobre mí",
     "about.me.p1":
-      "Soy <strong>Florencia Falco</strong>, profesora de Ciencias de la Computación y coordinadora de tecnología. Trabajo en un colegio privado en Montevideo y en un centro educativo que acompaña a jóvenes en contextos de vulnerabilidad socioeconómica.",
+      "Soy <strong>Florencia Falco</strong>, profesora de Ciencias de la Computación y coordinadora de tecnología. Trabajo en un colegio privado en Montevideo y en el <strong>Centro Educativo Los Tréboles</strong>, ubicado en el barrio Flor de Maroñas, donde construyo un programa transversal de tecnología desde cero, con foco en cómo integrar la IA.",
     "about.me.p2":
-      "Hace algunos años pasé de la educación inicial a la programación y la robótica, y desde entonces no paré de buscar formas de enseñar tecnología que sean significativas, accesibles y honestas con el contexto en el que trabajo.",
+      "Empecé mi carrera profesional trabajando en educación inicial, pero en 2017 comencé a dar clases de programación y robótica, y desde entonces me siento en la intersección entre la educación, la tecnología y la innovación.",
     "about.me.p3":
-      "Me metí en este recorrido autodidacta porque el curso de Karen Brennan toca exactamente las preguntas que me hago todos los días: <em>¿cómo creamos con IA en lugar de solo consumirla?</em> <em>¿Qué cambia cuando la programación deja de ser una barrera técnica y se vuelve una conversación?</em> <em>¿Cómo llevamos esto al aula sin perder lo crítico?</em>",
+      "Actualmente curso el <strong>Diploma en Inteligencia Artificial y Prácticas Educativas</strong> de FLACSO, y en enero de 2026 viajé a <strong>BETT Londres</strong> para entender hacia dónde se mueve la educación tecnológica a nivel internacional.",
     "about.me.p4":
-      "Si sos docente y estás en el mismo lugar que yo —con ganas de avanzar pero sin saber por dónde empezar—, este espacio es para vos.",
+      "Me metí en este recorrido autodidacta porque el curso de Karen Brennan toca preguntas que me hago todos los días: <em>¿cómo creamos con IA en lugar de solo consumirla?</em> <em>¿Qué cambia cuando la programación deja de ser una barrera técnica y se vuelve una conversación?</em> <em>¿Cómo llevamos esto al aula en contextos donde la formación de calidad no está garantizada?</em>",
+    "about.me.p5":
+      "Yo tampoco sé todo. Por eso estudio. Y comparto el camino, no el resultado pulido. Si te resuenan estas preguntas, te invito a recorrer las seis semanas conmigo.",
     "about.link.syllabus": "Plan de estudio original (PDF)",
     "about.link.gazette": "Artículo del Harvard Gazette",
 
@@ -198,13 +200,15 @@ const translations = {
       "I am not enrolled at Harvard. I am working through the public syllabus on my own — reading the assigned texts, building the weekly projects, and sharing my reflections on LinkedIn. All credit for the curriculum design belongs to Karen Brennan and Jacob Wolf (HGSE).",
     "about.me.heading": "About me",
     "about.me.p1":
-      "I'm <strong>Florencia Falco</strong>, a Computer Science teacher and technology coordinator. I work at a private school in Montevideo, Uruguay, and at an educational center supporting young people in contexts of socioeconomic vulnerability.",
+      "I'm <strong>Florencia Falco</strong>, a Computer Science teacher and technology coordinator. I work at a private school in Montevideo, Uruguay, and at <strong>Centro Educativo Los Tréboles</strong>, in the Flor de Maroñas neighborhood, where I'm building a cross-curricular technology program from scratch, with a focus on integrating AI.",
     "about.me.p2":
-      "A few years ago I moved from early childhood education into programming and robotics, and ever since I haven't stopped looking for ways to teach technology that are meaningful, accessible, and honest about the context I work in.",
+      "I started my career working in early childhood education, but in 2017 I began teaching programming and robotics, and ever since I've felt I sit at the intersection of education, technology, and innovation.",
     "about.me.p3":
-      "I started this self-directed journey because Karen Brennan's course touches exactly the questions I ask myself every day: <em>how do we create with AI instead of only consuming it?</em> <em>What changes when programming stops being a technical barrier and becomes a conversation?</em> <em>How do we bring this into the classroom without losing the critical lens?</em>",
+      "I'm currently enrolled in the <strong>Diploma in Artificial Intelligence and Educational Practices</strong> at FLACSO, and in January 2026 I traveled to <strong>BETT London</strong> to understand where educational technology is heading internationally.",
     "about.me.p4":
-      "If you're a teacher in the same place I am — eager to move forward but unsure where to start — this space is for you.",
+      "I started this self-directed journey because Karen Brennan's course touches on the questions I ask myself every day: <em>how do we create with AI instead of just consuming it?</em> <em>What changes when programming stops being a technical barrier and becomes a conversation?</em> <em>How do we bring this into the classroom in contexts where quality teacher training isn't guaranteed?</em>",
+    "about.me.p5":
+      "I don't know everything either. That's why I study. And I share the journey, not the polished outcome. If these questions resonate with you, I invite you to walk the six weeks with me.",
     "about.link.syllabus": "Original syllabus (PDF)",
     "about.link.gazette": "Harvard Gazette article",
 
