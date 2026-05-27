@@ -31,14 +31,14 @@ HTML + CSS + JavaScript vanilla. Sin frameworks, sin build step, sin backend. Ho
 
 ## Cronograma
 
-- **Semana 1** — lunes 18 mayo 2026 — Build something that... tells a story
-- **Semana 2** — lunes 25 mayo 2026 — Build something that... makes your life easier
-- **Semana 3** — lunes 1 junio 2026 — Build something that... sparks joy
-- **Semana 4** — lunes 8 junio 2026 — Build something that... answers a question
-- **Semana 5** — lunes 15 junio 2026 — Build something that... invites play
-- **Semana 6** — lunes 22 junio 2026 — Build something that... feels like magic
+- **Semana 1** — miércoles 20 mayo 2026 — Build something that... tells a story
+- **Semana 2** — miércoles 27 mayo 2026 — Build something that... makes your life easier
+- **Semana 3** — miércoles 3 junio 2026 — Build something that... sparks joy
+- **Semana 4** — miércoles 10 junio 2026 — Build something that... answers a question
+- **Semana 5** — miércoles 17 junio 2026 — Build something that... invites play
+- **Semana 6** — miércoles 24 junio 2026 — Build something that... feels like magic
 
-Cada lunes a las 10:00 (UTC−3) se publica un post de LinkedIn que acompaña la actualización de la tarjeta correspondiente.
+Cada miércoles a las 10:00 (UTC−3) se publica un post de LinkedIn que acompaña la actualización de la tarjeta correspondiente.
 
 ## Cómo editar el contenido
 

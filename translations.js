@@ -27,7 +27,7 @@ const translations = {
     "hero.badge.publicSyllabus": "Plan de estudio público",
     "hero.badge.personal": "Recorrido personal",
     "hero.description":
-      "Durante seis semanas voy a leer los textos del plan de estudio, construir los proyectos semanales y compartir cada lunes una nueva reflexión. Una bitácora honesta del recorrido, abierta a quien quiera leerla.",
+      "Durante seis semanas voy a leer los textos del plan de estudio, construir los proyectos semanales y compartir cada miércoles una nueva reflexión. Una bitácora honesta del recorrido, abierta a quien quiera leerla.",
     "hero.cta.seeWeeks": "Ver las 6 semanas",
     "hero.cta.syllabus": "Ver plan de estudio original",
 
@@ -49,7 +49,7 @@ const translations = {
 
     "weeks.heading": "Las 6 semanas",
     "weeks.lead":
-      "Cada lunes, una semana nueva. Hacé click en una tarjeta para ver lecturas, herramienta usada, proyecto y reflexión.",
+      "Cada miércoles, una semana nueva. Hacé click en una tarjeta para ver lecturas, herramienta usada, proyecto y reflexión.",
     "weeks.week": "Semana",
     "weeks.expand.aria": "Expandir o colapsar la semana",
     "weeks.published": "Publicación: {date}",
@@ -145,7 +145,7 @@ const translations = {
     "hero.badge.publicSyllabus": "Public syllabus",
     "hero.badge.personal": "Personal journey",
     "hero.description":
-      "For six weeks I'll read the assigned texts, build the weekly projects, and share a new reflection every Monday. An honest log of the journey, open to whoever wants to read it.",
+      "For six weeks I'll read the assigned texts, build the weekly projects, and share a new reflection every Wednesday. An honest log of the journey, open to whoever wants to read it.",
     "hero.cta.seeWeeks": "See the 6 weeks",
     "hero.cta.syllabus": "View original syllabus",
 
@@ -167,7 +167,7 @@ const translations = {
 
     "weeks.heading": "The 6 weeks",
     "weeks.lead":
-      "A new week every Monday. Click a card to see readings, the tool used, the project, and the weekly reflection.",
+      "A new week every Wednesday. Click a card to see readings, the tool used, the project, and the weekly reflection.",
     "weeks.week": "Week",
     "weeks.expand.aria": "Expand or collapse this week",
     "weeks.published": "Published: {date}",

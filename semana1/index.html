@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Una clase en 2030 — Florencia Falco</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin="">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 0 L11.5 8.5 L20 10 L11.5 11.5 L10 20 L8.5 11.5 L0 10 L8.5 8.5 Z" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <div class="brand-eyebrow" data-i18n="topbar.eyebrow">Proyecto Semana 1</div>
+      <div class="brand-title" data-i18n="topbar.title">Una clase en 2030</div>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <a href="https://flofal.github.io/vibe-coding-journey" class="dashboard-link" data-i18n="topbar.dashboard">↗ Ir al dashboard</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section class="scene active" id="scene-home">
+  <div class="card home-card">
+    <div class="home-faro" aria-hidden="true">
+      <svg viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg">
+        <circle class="faro-beacon" cx="40" cy="22" r="22" fill="#017361"/>
+        <path d="M28 18 L40 5 L52 18 Z" fill="#1A385E"/>
+        <rect x="30" y="18" width="20" height="13" fill="#1A385E"/>
+        <rect x="34" y="21" width="12" height="7" fill="#E1FDCB"/>
+        <rect x="26" y="31" width="28" height="4" fill="#1A385E"/>
+        <path d="M30 35 L50 35 L46 92 L34 92 Z" fill="#1A385E"/>
+        <rect x="30.5" y="48" width="19" height="7" fill="white"/>
+        <rect x="30.8" y="68" width="18.4" height="7" fill="white"/>
+        <rect x="26" y="92" width="28" height="7" fill="#1A385E"/>
+        <ellipse cx="40" cy="106" rx="34" ry="3" fill="#1A385E" opacity="0.15"/>
+      </svg>
+    </div>
+    <div class="home-eyebrow" data-i18n="home.eyebrow">Proyecto · Semana 1 · Vibecoding</div>
+    <h1 class="home-title" data-i18n="home.title">Una clase en<br><em>2030</em></h1>
+    <p class="home-intro" data-i18n="home.intro">Te invito a entrar a una clase del 2030 y mirar dos historias que pasan el mismo lunes. Elegí desde dónde mirar.</p>
+    <div class="home-paths">
+      <button class="path-card" data-path="sofia" onclick="goTo('sofia-1')">
+        <div class="path-image"><img src="assets/sofi.png" alt="Sofía"></div>
+        <div class="path-content">
+          <div class="path-name">Sofía</div>
+          <div class="path-label" data-i18n="home.sofia.label">Estudiante</div>
+          <div class="path-desc" data-i18n="home.sofia.desc">Sexto grado. Hoy presenta el proyecto que nació de una curiosidad propia.</div>
+        </div>
+      </button>
+      <button class="path-card" data-path="tomas" onclick="goTo('tomas-1')">
+        <div class="path-image"><img src="assets/tomas.png" alt="Tomás"></div>
+        <div class="path-content">
+          <div class="path-name">Tomás</div>
+          <div class="path-label" data-i18n="home.tomas.label">Docente</div>
+          <div class="path-desc" data-i18n="home.tomas.desc">Termina la jornada. Va a la reunión que antes no existía.</div>
+        </div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SOFÍA · 1 — Despertar -->
+<section class="scene" id="scene-sofia-1">
+  <div class="card">
+    <div class="card-grid">
+      <div>
+        <div class="eyebrow with-icon">
+          <svg class="eyebrow-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M7 3.5V7L9 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <span data-i18n="sofia1.eyebrow">Lunes · 6:00 AM · La habitación de Sofía</span>
+        </div>
+        <h2 class="scene-title" data-i18n="sofia1.title">Sofía abre los ojos<br><em>antes del despertador</em></h2>
+        <div class="body-text">
+          <p class="lead" data-i18n="sofia1.p1">Es lunes. <mark>Hoy es el día</mark>. Hace un mes que viene preparando su proyecto y por fin lo va a mostrar a la clase.</p>
+          <p data-i18n="sofia1.p2">Tiene <mark>diez años</mark>. Cursa sexto. Y todavía no terminó de entender por qué a sus padres les cuesta tanto creer lo que les cuenta cuando vuelve de la escuela.</p>
+        </div>
+        <div class="widget">
+          <div class="widget-question" data-i18n="sofia1.widget.q">¿En qué está pensando ahora?</div>
+          <div class="widget-options">
+            <button class="widget-btn" data-id="inicio" onclick="showThought('inicio')" data-i18n="sofia1.btn.inicio">En cómo va a empezar</button>
+            <button class="widget-btn" data-id="farero" onclick="showThought('farero')" data-i18n="sofia1.btn.farero">En la cara del farero de Cabo Polonio</button>
+            <button class="widget-btn" data-id="drexler" onclick="showThought('drexler')" data-i18n="sofia1.btn.drexler">En los 12 segundos de Drexler</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="scene-image">
+          <img src="assets/sofia.png" alt="Sofía">
+        </div>
+        <div class="thought-output" id="thought-output">
+          <div class="thought-empty" data-i18n="sofia1.thought.empty">Tocá una idea de la izquierda y asomate a lo que está pensando.</div>
+        </div>
+      </div>
+    </div>
+    <div class="scene-nav">
+      <button class="btn btn-ghost" onclick="goHome()" data-i18n="nav.back.home">← Volver al inicio</button>
+      <button class="btn btn-primary" onclick="goTo('sofia-2')" data-i18n="nav.continue">Continuar historia →</button>
+    </div>
+  </div>
+</section>
+
+<!-- SOFÍA · 2 — La curiosidad y el mapa -->
+<section class="scene" id="scene-sofia-2">
+  <div class="card">
+    <div class="card-grid">
+      <div>
+        <div class="eyebrow with-icon">
+          <svg class="eyebrow-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M7 3 L8.5 7 L7 11 L5.5 7 Z" fill="currentColor"/>
+          </svg>
+          <span data-i18n="sofia2.eyebrow">El proyecto</span>
+        </div>
+        <h2 class="scene-title" data-i18n="sofia2.title">Una pregunta<br>que <em>se siguió</em></h2>
+        <div class="body-text">
+          <p class="lead" data-i18n="sofia2.p1">Su proyecto empezó hace un mes, <mark>un fin de semana en Colonia</mark>. Vio el faro desde la rambla, subió la escalera de caracol y se quedó mirando un rato largo. Cuando bajó tenía una pregunta sin terminar de formar: <em>¿cuántos faros hay en Uruguay, y por qué cada uno está donde está?</em></p>
+          <p data-i18n="sofia2.p2">En la escuela tienen un tiempo cada mes para seguir una pregunta así. <mark>No una pregunta del programa, una propia</mark>. Sofía agarró la suya y la siguió hasta acá.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-eyebrow" data-i18n="sofia2.panel.eyebrow">El recurso que construyó</div>
+          <div class="panel-title" data-i18n="sofia2.panel.title">Siete faros del Uruguay.<br>Tocá cada uno.</div>
+        </div>
+        <p class="panel-hint" data-i18n="sofia2.panel.hint">Esto es lo que va a mostrar hoy en clase. Cada faro tiene una historia que ella descubrió.</p>
+
+        <div id="sofia-map" role="img" aria-label="Mapa interactivo de los 7 faros del Uruguay"></div>
+
+        <div class="faro-info" id="faro-panel">
+          <div class="faro-empty" data-i18n="sofia2.faro.empty"><strong>Siete faros, siete historias.</strong> Tocá cualquiera del mapa. El orden lo elegís vos.</div>
+        </div>
+
+        <p class="panel-foot" data-i18n="sofia2.panel.foot"><strong>Lo construyó ella</strong> con ayuda de IA durante un mes. La curiosidad fue suya. Las preguntas también.</p>
+      </div>
+    </div>
+    <div class="scene-nav">
+      <button class="btn btn-ghost" onclick="goTo('sofia-1')" data-i18n="nav.back">← Volver</button>
+      <button class="btn btn-primary" onclick="goTo('sofia-3')" data-i18n="nav.continue">Continuar historia →</button>
+    </div>
+  </div>
+</section>
+
+<!-- SOFÍA · 3 — La presentación -->
+<section class="scene" id="scene-sofia-3">
+  <div class="card">
+    <div class="card-grid narrow">
+      <div>
+        <div class="eyebrow with-icon">
+          <svg class="eyebrow-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="2" width="8" height="10" rx="0.8" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M5 5h4M5 7.5h4M5 10h2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <span data-i18n="sofia3.eyebrow">7:45 AM · Camino a la escuela</span>
+        </div>
+        <h2 class="scene-title" data-i18n="sofia3.title">Lleva más de lo<br>que entró <em>en el mapa</em></h2>
+        <div class="body-text">
+          <p class="lead" data-i18n="sofia3.p1">A las ocho menos cuarto sale para la escuela. Lleva el proyecto cargado en la tablet y <mark>un cuaderno pequeño</mark> donde anotó cosas que no entró en el mapa: la cara del farero de Cabo Polonio cuando le contó del primer farero siciliano, la voz de la autora del libro que le respondió un mail, el momento en que entendió por qué Drexler eligió esos doce segundos.</p>
+          <p data-i18n="sofia3.p2">Su maestro la va a escuchar. Sus compañeros también, aunque cada uno trae algo distinto: una investiga sobre las palomas mensajeras, otro está estudiando por qué las olas siempre llegan paralelas a la orilla. <mark>Cada proyecto nació de una pregunta propia</mark>.</p>
+          <p data-i18n="sofia3.p3">Sofía no sabe todavía que lo que está aprendiendo de verdad no son los faros. Es algo más: <mark>que su curiosidad es algo que puede seguir</mark>.</p>
+        </div>
+      </div>
+    </div>
+    <div class="scene-nav">
+      <button class="btn btn-ghost" onclick="goTo('sofia-2')" data-i18n="nav.back">← Volver</button>
+      <button class="btn btn-primary" onclick="goTo('final')" data-i18n="nav.end">Ver el final →</button>
+    </div>
+  </div>
+</section>
+
+<!-- TOMÁS · 1 — Coordinación antes/ahora -->
+<section class="scene" id="scene-tomas-1">
+  <div class="card">
+    <div class="card-grid">
+      <div>
+        <div class="eyebrow with-icon">
+          <svg class="eyebrow-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M7 3.5V7L9 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          <span data-i18n="tomas1.eyebrow">Lunes · 15:40 · Después de clase</span>
+        </div>
+        <h2 class="scene-title" data-i18n="tomas1.title">Tomás camina<br>hacia la sala<br><em>de profesores</em></h2>
+        <div class="body-text">
+          <p class="lead" data-i18n="tomas1.p1">Es lunes y los lunes a las cuatro hay coordinación. <mark>Lo nuevo no es la reunión. Lo nuevo es de qué hablan</mark>.</p>
+        </div>
+      </div>
+      <div class="compare">
+        <div class="compare-block antes">
+          <div class="compare-eyebrow" data-i18n="tomas1.antes.eyebrow">Antes · hace cinco años</div>
+          <div class="compare-title" data-i18n="tomas1.antes.title">Esta hora era para terminar el papeleo</div>
+          <p class="compare-text" data-i18n="tomas1.antes.text">Corregir lo que no había llegado a corregir en la semana. Cargar notas. Preparar la planificación. Una mesa larga con todos los profes haciendo lo mismo, en silencio, cada uno en lo suyo. Salían cansados y sin haberse hablado.</p>
+        </div>
+        <div class="compare-block ahora">
+          <div class="compare-eyebrow" data-i18n="tomas1.ahora.eyebrow">Ahora · 2030</div>
+          <div class="compare-title" data-i18n="tomas1.ahora.title">Esta hora es para hablar de los gurises</div>
+          <p class="compare-text" data-i18n="tomas1.ahora.text">Lo administrativo lo hace la IA, en segundo plano, mientras enseñan. Lo que queda es esta hora. Lo que queda es lo que importa: contarse qué pasó hoy, qué les sorprendió, qué les costó acompañar, qué proyecto está despegando, qué chico necesita otra cosa.</p>
+        </div>
+      </div>
+    </div>
+    <div class="scene-nav">
+      <button class="btn btn-ghost" onclick="goHome()" data-i18n="nav.back.home">← Volver al inicio</button>
+      <button class="btn btn-primary" onclick="goTo('tomas-2')" data-i18n="nav.continue">Continuar historia →</button>
+    </div>
+  </div>
+</section>
+
+<!-- TOMÁS · 2 — Lo colegial -->
+<section class="scene" id="scene-tomas-2">
+  <div class="card">
+    <div class="card-grid narrow">
+      <div>
+        <div class="eyebrow with-icon">
+          <svg class="eyebrow-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="5" cy="7" r="3" stroke="currentColor" stroke-width="1.4"/>
+            <circle cx="9" cy="7" r="3" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+          <span data-i18n="tomas2.eyebrow">Lo que cambió de fondo</span>
+        </div>
+        <h2 class="scene-title" data-i18n="tomas2.title">Hoy Tomás llega<br>con algo <em>para contar</em></h2>
+        <div class="body-text">
+          <p class="lead" data-i18n="tomas2.p1">Sofía presentó el proyecto de los faros y lo que mostró superó lo que él esperaba. Pero no es eso lo que más le quedó. Le quedó la <mark>cara de los demás chicos</mark> mientras la escuchaban. Le quedó la pregunta que hizo Mateo al final, que se nota que llevaba pensando hace rato. Le quedó algo del clima del aula que quiere poder nombrar bien para contarles.</p>
+          <p data-i18n="tomas2.p2">La docencia, que durante décadas fue <mark>una de las profesiones más solitarias</mark> que existen, dejó de serlo. No porque haya menos trabajo. Porque alguien le devolvió a Tomás y a sus colegas la <mark>posibilidad de mirar lo que hacen, juntos</mark>.</p>
+        </div>
+      </div>
+    </div>
+    <div class="scene-nav">
+      <button class="btn btn-ghost" onclick="goTo('tomas-1')" data-i18n="nav.back">← Volver</button>
+      <button class="btn btn-primary" onclick="goTo('final')" data-i18n="nav.end">Ver el final →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="scene" id="scene-final">
+  <div class="card final-card">
+    <div class="final-eyebrow" data-i18n="final.eyebrow">Una pregunta</div>
+    <h2 class="final-question" data-i18n="final.question">¿Tus estudiantes<br>consumen IA,<br>o <em>crean</em> con ella?</h2>
+    <div class="final-divider"></div>
+    <button class="final-back" onclick="goHome()" data-i18n="final.back">Volver a las historias</button>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot" data-i18n="foot">
+  Proyecto Semana 1 · Curso T564A Vibe Coding — Karen Brennan (Harvard) · Por <strong>Florencia Falco</strong> · 2026
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""></script>
+<script src="js/translations.js"></script>
+<script src="js/data.js"></script>
+<script src="js/map.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

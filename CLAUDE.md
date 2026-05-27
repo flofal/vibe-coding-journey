@@ -14,7 +14,7 @@ El dashboard NO es una plataforma de curso. Es una bitácora pública que muestr
 - Las reflexiones, lecturas, herramientas y proyectos de cada semana
 - Links a los posts de LinkedIn donde Flo documenta el proceso
 
-El dashboard se publica en **GitHub Pages** y se acompaña de una serie de posts semanales en LinkedIn (lunes a las 10 AM, durante 6 semanas, arrancando el lunes 18 de mayo de 2026).
+El dashboard se publica en **GitHub Pages** y se acompaña de una serie de posts semanales en LinkedIn (miércoles a las 10 AM, durante 6 semanas, arrancando el miércoles 20 de mayo de 2026).
 
 ## 2. Qué NO es este proyecto
 
@@ -74,7 +74,7 @@ Links debajo:
 - Número de semana
 - Título: **"Build something that..."** + el tema en español ("...cuenta una historia", "...te hace la vida más fácil", etc.)
 - Estado: pendiente / en curso / completada (ES) — pending / in progress / completed (EN)
-- Fecha tuya (lunes de cada semana, ver sección 9)
+- Fecha tuya (miércoles de cada semana, ver sección 9)
 
 Al hacer click, la tarjeta expande y muestra:
 - **Descripción del tema** (breve, tomada del sílabos)
@@ -102,7 +102,6 @@ Estos son los temas y lecturas del sílabos original. **Mantener los títulos "B
 - Tema (ES): "Cuenta una historia"
 - Lecturas:
   - Turing, A. (1950). *Computing machinery and intelligence.* Mind, 59(236), 433–460.
-  - Crawford, K. (2021). *Atlas of AI: Power, politics, and the planetary costs of artificial intelligence.* Yale University Press.
 
 ### Semana 2 — Build something that... makes your life easier
 - Tema (ES): "Te hace la vida más fácil"
@@ -162,14 +161,14 @@ En modo EN, si una reflexión semanal está vacía en inglés, mostrar el texto 
 
 ## 9. Fechas
 
-Cronograma planificado (lunes de cada semana, publicación del post):
+Cronograma planificado (miércoles de cada semana, publicación del post):
 
-- **Semana 1:** lunes 18 de mayo de 2026 (10 AM)
-- **Semana 2:** lunes 25 de mayo de 2026
-- **Semana 3:** lunes 1 de junio de 2026
-- **Semana 4:** lunes 8 de junio de 2026
-- **Semana 5:** lunes 15 de junio de 2026
-- **Semana 6:** lunes 22 de junio de 2026
+- **Semana 1:** miércoles 20 de mayo de 2026 (10 AM)
+- **Semana 2:** miércoles 27 de mayo de 2026
+- **Semana 3:** miércoles 3 de junio de 2026
+- **Semana 4:** miércoles 10 de junio de 2026
+- **Semana 5:** miércoles 17 de junio de 2026
+- **Semana 6:** miércoles 24 de junio de 2026
 
 (Nota: La Semana 1 técnicamente es la presentación del proyecto, no la primera semana de Karen. Confirmar con Flo si quiere una "Semana 0" separada o si la presentación va integrada en la Semana 1.)
 

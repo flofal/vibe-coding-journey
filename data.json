@@ -8,8 +8,8 @@
         "es": "Cuenta una historia",
         "en": "Tells a story"
       },
-      "date": "2026-05-18",
-      "status": "pending",
+      "date": "2026-05-20",
+      "status": "completed",
       "description": {
         "es": "Primera semana del recorrido. Explorar cómo el código puede ser un medio narrativo: construir una pieza que cuente algo —un recuerdo, una idea, una pregunta abierta— y arrancar la conversación con la audiencia que va a acompañar las próximas seis semanas.",
         "en": "First week of the journey. Explore how code can be a narrative medium: build a piece that tells something — a memory, an idea, an open question — and kick off the conversation with the audience that will follow the next six weeks."
@@ -21,18 +21,11 @@
           "title": "Computing machinery and intelligence",
           "source": "Mind, 59(236), 433–460",
           "note": ""
-        },
-        {
-          "author": "Crawford, K.",
-          "year": 2021,
-          "title": "Atlas of AI: Power, politics, and the planetary costs of artificial intelligence",
-          "source": "Yale University Press",
-          "note": ""
         }
       ],
-      "tool": "",
-      "project": { "url": "", "embed": false, "screenshots": [] },
-      "reflection": "",
+      "tool": "Gemini → Nano Banana → Claude Code",
+      "project": { "url": "semana1/", "embed": false, "screenshots": [] },
+      "reflection": "[Borrador — editar antes de publicar]\n\nEmpecé el proyecto con Gemini. Lo que me gustó es que me dio una buena idea de cómo armar el recurso interactivo, aunque no era tan bueno implementándolo.\n\nUsé Nano Banana para las imágenes.\n\nTerminé con Claude Code, que me sirvió para llevarlo a formato app y cerrar la implementación.",
       "linkedinUrl": ""
     },
     {
@@ -42,8 +35,8 @@
         "es": "Te hace la vida más fácil",
         "en": "Makes your life easier"
       },
-      "date": "2026-05-25",
-      "status": "pending",
+      "date": "2026-05-27",
+      "status": "in_progress",
       "description": {
         "es": "Identificar una fricción concreta del día a día y construir una herramienta que la resuelva, aunque sea de forma mínima.",
         "en": "Identify a concrete friction from daily life and build a tool that solves it, even if minimally."
@@ -76,7 +69,7 @@
         "es": "Despierta alegría",
         "en": "Sparks joy"
       },
-      "date": "2026-06-01",
+      "date": "2026-06-03",
       "status": "pending",
       "description": {
         "es": "Construir algo gratuito en el sentido más literal: sin métrica de productividad, solo por el gusto de hacerlo.",
@@ -110,7 +103,7 @@
         "es": "Responde una pregunta",
         "en": "Answers a question"
       },
-      "date": "2026-06-08",
+      "date": "2026-06-10",
       "status": "pending",
       "description": {
         "es": "Tomar una pregunta que me ronde —técnica, pedagógica, personal— y diseñar un artefacto que ayude a responderla o a hacerla más interesante.",
@@ -144,7 +137,7 @@
         "es": "Invita a jugar",
         "en": "Invites play"
       },
-      "date": "2026-06-15",
+      "date": "2026-06-17",
       "status": "pending",
       "description": {
         "es": "Diseñar una experiencia que invite a otrxs a jugar, explorar, equivocarse. El éxito se mide en sonrisas, no en métricas.",
@@ -178,7 +171,7 @@
         "es": "Se siente como magia",
         "en": "Feels like magic"
       },
-      "date": "2026-06-22",
+      "date": "2026-06-24",
       "status": "pending",
       "description": {
         "es": "Cierre del módulo: una pieza que combine todo lo aprendido y que provoque ese instante de asombro en quien la usa.",
