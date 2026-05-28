@@ -358,6 +358,17 @@
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleCard(li); }
       });
 
+      const refToggle = li.querySelector(".reflection-toggle");
+      if (refToggle) {
+        refToggle.addEventListener("click", function () {
+          const wrapper = refToggle.closest(".reflection-collapsible");
+          if (!wrapper) return;
+          const collapsed = wrapper.getAttribute("data-collapsed") === "true";
+          wrapper.setAttribute("data-collapsed", collapsed ? "false" : "true");
+          refToggle.setAttribute("aria-expanded", collapsed ? "true" : "false");
+        });
+      }
+
       list.appendChild(li);
     });
   }
@@ -381,10 +392,7 @@
           `${escapeHtml(r.author || "")} (${escapeHtml(String(r.year || ""))}). ` +
           `<em>${escapeHtml(r.title || "")}</em>` +
           (r.source ? `. ${escapeHtml(r.source)}` : "") + ".";
-        const note = r.note
-          ? `<p class="reading-note">${escapeHtml(r.note)}</p>`
-          : `<p class="reading-note">${escapeHtml(t("card.readingNote.empty"))}</p>`;
-        return `<li class="reading"><p class="reading-cite">${cite}</p>${note}</li>`;
+        return `<li class="reading"><p class="reading-cite">${cite}</p></li>`;
       }).join("");
       sections.push(`
         <div class="week-section">
@@ -427,15 +435,35 @@
       </div>
     `);
 
-    const reflectionRaw = (w.reflection || "").trim();
+    let reflectionRaw = "";
+    let isFallback = false;
+    if (w.reflection && typeof w.reflection === "object") {
+      reflectionRaw = (w.reflection[state.lang] || "").trim();
+      if (!reflectionRaw && state.lang === "en") {
+        reflectionRaw = (w.reflection.es || "").trim();
+        isFallback = !!reflectionRaw;
+      }
+    } else if (typeof w.reflection === "string") {
+      reflectionRaw = w.reflection.trim();
+      isFallback = state.lang === "en" && !!reflectionRaw;
+    }
     let reflectionHtml = "";
     if (!reflectionRaw) {
       reflectionHtml = `<p class="tool-empty">${escapeHtml(t("card.reflection.empty"))}</p>`;
     } else {
-      reflectionHtml = reflectionRaw.split(/\n\s*\n/).map(function (p) {
+      const paragraphs = reflectionRaw.split(/\n\s*\n/).map(function (p) {
         return `<p>${escapeHtml(p.trim()).replace(/\n/g, "<br>")}</p>`;
       }).join("");
-      if (state.lang === "en") {
+      reflectionHtml = `
+        <div class="reflection-collapsible" data-collapsed="true">
+          <div class="reflection-text">${paragraphs}</div>
+          <button type="button" class="reflection-toggle" aria-expanded="false">
+            <span class="reflection-toggle-more">${escapeHtml(t("card.reflection.more"))}</span>
+            <span class="reflection-toggle-less">${escapeHtml(t("card.reflection.less"))}</span>
+          </button>
+        </div>
+      `;
+      if (isFallback) {
         reflectionHtml += `<p class="reflection-fallback-notice">${escapeHtml(t("card.reflection.fallbackNotice"))}</p>`;
       }
     }

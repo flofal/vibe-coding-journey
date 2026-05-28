@@ -68,10 +68,11 @@ const translations = {
     "card.project.empty": "Proyecto en construcción.",
     "card.reflection": "Reflexión semanal",
     "card.reflection.empty": "Reflexión pendiente.",
+    "card.reflection.more": "Ver más",
+    "card.reflection.less": "Ver menos",
     "card.reflection.fallbackNotice":
       "Reflexión disponible en español — usa el traductor del navegador si lo necesitás.",
     "card.linkedin": "Leer el post en LinkedIn",
-    "card.readingNote.empty": "Sin nota todavía.",
 
     "page.sobre.title": "Sobre.",
     "page.sobre.lead": "El proyecto y quién soy.",
@@ -188,10 +189,11 @@ const translations = {
     "card.project.empty": "Project under construction.",
     "card.reflection": "Weekly reflection",
     "card.reflection.empty": "Reflection pending.",
+    "card.reflection.more": "Read more",
+    "card.reflection.less": "Read less",
     "card.reflection.fallbackNotice":
       "Reflection available in Spanish — use your browser's translator if needed.",
     "card.linkedin": "Read the LinkedIn post",
-    "card.readingNote.empty": "No note yet.",
 
     "page.sobre.title": "About.",
     "page.sobre.lead": "The project and who I am.",

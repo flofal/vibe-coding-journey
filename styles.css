@@ -357,6 +357,9 @@ a:hover, a:focus-visible {
 .hero-title-accent {
   color: var(--color-lavanda);
   text-shadow: 1.5px 1.5px 0 rgba(26, 56, 94, 0.28);
+  white-space: nowrap;
+  hyphens: none;
+  -webkit-hyphens: none;
 }
 .hero-title-accent--crimson {
   color: #A51C30;
@@ -599,6 +602,7 @@ a:hover, a:focus-visible {
   max-width: 60ch;
 }
 .weeks-head { margin-bottom: var(--space-3); }
+.weeks-head .section-lead { max-width: none; }
 
 .week-list { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-3); }
 
@@ -790,6 +794,36 @@ a:hover, a:focus-visible {
 }
 
 .reflection-block p { font-size: 1rem; }
+.reflection-collapsible[data-collapsed="true"] .reflection-text p:first-of-type {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+.reflection-collapsible[data-collapsed="true"] .reflection-text p:not(:first-of-type) {
+  display: none;
+}
+.reflection-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: var(--space-2);
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.reflection-toggle:hover { text-decoration: none; }
+.reflection-toggle .reflection-toggle-less { display: none; }
+.reflection-toggle[aria-expanded="true"] .reflection-toggle-more { display: none; }
+.reflection-toggle[aria-expanded="true"] .reflection-toggle-less { display: inline; }
 .reflection-fallback-notice {
   margin-top: var(--space-2);
   font-size: 0.82rem;

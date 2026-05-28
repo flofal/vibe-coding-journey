@@ -19,13 +19,19 @@
           "author": "Turing, A.",
           "year": 1950,
           "title": "Computing machinery and intelligence",
-          "source": "Mind, 59(236), 433–460",
-          "note": ""
+          "source": "Mind, 59(236), 433–460"
         }
       ],
       "tool": "Gemini → Nano Banana → Claude Code",
-      "project": { "url": "semana1/", "embed": false, "screenshots": [] },
-      "reflection": "Cuando me metí a hacer este proyecto tenía mis dudas, vengo hace unos meses usando vibecoding y no estaba segura de si iba a aprender algo nuevo, pero resulta que sí.\n\nEl proceso empezó con Claude, le pedí que me fuera haciendo preguntas, una por una, para poder ir definiendo qué historia quería contar, y eso es lo que me gusta del uso de la IA, usarlo como potenciador de mi propio proceso de pensamiento, no como reemplazo o delegar la cognición, sino lo contrario.\n\nCuando tenía la idea armada me fui a Gemini, porque quería probarlo, iteré bastantes veces y captó muy bien la propuesta, hasta que se me acabaron los tokens de la versión gratuita y la calidad bajó, así que decidí volver a lo que me quedaba más cómodo, que fue Claude Code, y en el medio usé Nano Banana para la creación de imágenes.\n\nUna de las cosas que más me sorprendió de mí misma es cuánto me cuesta frenar, realmente me encanta crear cosas y podría haber seguido puliendo esto hasta el infinito, pero mi tiempo es finito y tengo otras ocupaciones, así que decidí dejarlo así y me quedé muy contenta con el resultado.\n\nPensando en la historia, me acordé de un amigo que me contó cómo guiado por su curiosidad por los faros terminó recorriendo varios en Uruguay, le mostraron uno por dentro, un amigo le prestó un libro y terminó hablando con el autor, y lo que me maravilló de esa historia es cómo la curiosidad nos lleva a lugares que capaz no imaginamos al principio, así que con este proyecto me agarré de eso, y de mi trabajo, la educación, y hablé de cómo me imagino que la IA podría cambiar la educación de manera positiva, desafiando a pensar.\n\nTambién me acordé de una entrevista de trabajo donde me preguntaron qué quería dejar en mis estudiantes como docente de programación, y mi respuesta fue, la idea de pasar de consumidores a creadores, usar la tecnología para crear y como herramienta de expresión, y con este proyecto creo que yo misma soy la prueba de eso, de mi entusiasmo por crear con la tecnología y compartir con el resto mi mirada, porque al fin y al cabo, eso es lo que nos hace humanos.",
+      "project": {
+        "url": "semana1/",
+        "embed": false,
+        "screenshots": []
+      },
+      "reflection": {
+        "es": "Cuando me metí a hacer este proyecto tenía mis dudas, vengo hace unos meses usando vibecoding y no estaba segura de si iba a aprender algo nuevo, pero resulta que sí.\n\nEl proceso empezó con Claude, le pedí que me fuera haciendo preguntas, una por una, para poder ir definiendo qué historia quería contar, y eso es lo que me gusta del uso de la IA, usarlo como potenciador de mi propio proceso de pensamiento, no como reemplazo o delegar la cognición, sino lo contrario.\n\nCuando tenía la idea armada me fui a Gemini, porque quería probarlo, iteré bastantes veces y captó muy bien la propuesta, hasta que se me acabaron los tokens de la versión gratuita y la calidad bajó, así que decidí volver a lo que me quedaba más cómodo, que fue Claude Code, y en el medio usé Nano Banana para la creación de imágenes.\n\nUna de las cosas que más me sorprendió de mí misma es cuánto me cuesta frenar, realmente me encanta crear cosas y podría haber seguido puliendo esto hasta el infinito, pero mi tiempo es finito y tengo otras ocupaciones, así que decidí dejarlo así y me quedé muy contenta con el resultado.\n\nPensando en la historia, me acordé de un amigo que me contó cómo guiado por su curiosidad por los faros terminó recorriendo varios en Uruguay, le mostraron uno por dentro, un amigo le prestó un libro y terminó hablando con el autor, y lo que me maravilló de esa historia es cómo la curiosidad nos lleva a lugares que capaz no imaginamos al principio, así que con este proyecto me agarré de eso, y de mi trabajo, la educación, y hablé de cómo me imagino que la IA podría cambiar la educación de manera positiva, desafiando a pensar.\n\nTambién me acordé de una entrevista de trabajo donde me preguntaron qué quería dejar en mis estudiantes como docente de programación, y mi respuesta fue, la idea de pasar de consumidores a creadores, usar la tecnología para crear y como herramienta de expresión, y con este proyecto creo que yo misma soy la prueba de eso, de mi entusiasmo por crear con la tecnología y compartir con el resto mi mirada, porque al fin y al cabo, eso es lo que nos hace humanos.",
+        "en": "When I started this project I had my doubts — I've been using vibecoding for a few months and wasn't sure I'd actually learn something new. Turns out I did.\n\nThe process started with Claude. I asked it to ask me questions, one at a time, so I could figure out what story I wanted to tell. That's what I love about using AI: as an amplifier of my own thinking process, not as a replacement, not delegating cognition — quite the opposite.\n\nOnce the idea was solid I moved over to Gemini, because I wanted to try it. I iterated several times and it caught the proposal really well — until I ran out of free-tier tokens and the quality dropped. So I went back to what I felt most comfortable with, Claude Code. Along the way I used Nano Banana to generate the images.\n\nOne of the things that surprised me most about myself is how hard it is for me to stop. I really love making things and I could have kept polishing this forever — but my time is finite and I have other things going on, so I decided to leave it here. I'm really happy with the result.\n\nThinking about the story, I remembered a friend who told me how, guided by his curiosity about lighthouses, he ended up visiting several around Uruguay — they showed him one from the inside, a friend lent him a book, and he ended up talking to the author. What amazed me about that story is how curiosity takes us places we couldn't have imagined at the start. So with this project I held on to that idea, and to my work in education, and talked about how I imagine AI could change education for the better — by inviting us to think.\n\nI also remembered a job interview where I was asked what I wanted to leave with my students as a programming teacher. My answer was: the idea of moving from consumers to creators, using technology to create and as a tool for expression. And with this project I think I'm proof of that myself — of my enthusiasm for creating with technology and sharing my perspective with others. Because, at the end of the day, that's what makes us human."
+      },
       "linkedinUrl": ""
     },
     {
@@ -46,20 +52,25 @@
           "author": "Wiener, N.",
           "year": 1950,
           "title": "The human use of human beings: Cybernetics and society",
-          "source": "Houghton Mifflin",
-          "note": ""
+          "source": "Houghton Mifflin"
         },
         {
           "author": "Benjamin, R.",
           "year": 2019,
           "title": "Race after technology: Abolitionist tools for the New Jim Code",
-          "source": "Polity Press",
-          "note": ""
+          "source": "Polity Press"
         }
       ],
       "tool": "",
-      "project": { "url": "", "embed": false, "screenshots": [] },
-      "reflection": "",
+      "project": {
+        "url": "",
+        "embed": false,
+        "screenshots": []
+      },
+      "reflection": {
+        "es": "",
+        "en": ""
+      },
       "linkedinUrl": ""
     },
     {
@@ -80,20 +91,25 @@
           "author": "Licklider, J. C. R.",
           "year": 1960,
           "title": "Man-computer symbiosis",
-          "source": "IRE Transactions on Human Factors in Electronics, HFE-1(1), 4–11",
-          "note": ""
+          "source": "IRE Transactions on Human Factors in Electronics, HFE-1(1), 4–11"
         },
         {
           "author": "Hayles, N. K.",
           "year": 2025,
           "title": "Bacteria to AI: Human futures with our nonhuman symbionts",
-          "source": "University of Chicago Press",
-          "note": ""
+          "source": "University of Chicago Press"
         }
       ],
       "tool": "",
-      "project": { "url": "", "embed": false, "screenshots": [] },
-      "reflection": "",
+      "project": {
+        "url": "",
+        "embed": false,
+        "screenshots": []
+      },
+      "reflection": {
+        "es": "",
+        "en": ""
+      },
       "linkedinUrl": ""
     },
     {
@@ -114,20 +130,25 @@
           "author": "Weizenbaum, J.",
           "year": 1967,
           "title": "Contextual understanding by computers",
-          "source": "Communications of the ACM, 10(8), 474–480",
-          "note": ""
+          "source": "Communications of the ACM, 10(8), 474–480"
         },
         {
           "author": "Tarnoff, B.",
           "year": 2023,
           "title": "Weizenbaum's nightmares: How the inventor of the first chatbot turned against AI",
-          "source": "The Guardian",
-          "note": ""
+          "source": "The Guardian"
         }
       ],
       "tool": "",
-      "project": { "url": "", "embed": false, "screenshots": [] },
-      "reflection": "",
+      "project": {
+        "url": "",
+        "embed": false,
+        "screenshots": []
+      },
+      "reflection": {
+        "es": "",
+        "en": ""
+      },
       "linkedinUrl": ""
     },
     {
@@ -148,20 +169,25 @@
           "author": "Dreyfus, H. L.",
           "year": 1972,
           "title": "What computers can't do: A critique of artificial reason",
-          "source": "Harper & Row",
-          "note": ""
+          "source": "Harper & Row"
         },
         {
           "author": "Hao, K.",
           "year": 2025,
           "title": "Empire of AI: Dreams and nightmares in Sam Altman's OpenAI",
-          "source": "Penguin Press",
-          "note": ""
+          "source": "Penguin Press"
         }
       ],
       "tool": "",
-      "project": { "url": "", "embed": false, "screenshots": [] },
-      "reflection": "",
+      "project": {
+        "url": "",
+        "embed": false,
+        "screenshots": []
+      },
+      "reflection": {
+        "es": "",
+        "en": ""
+      },
       "linkedinUrl": ""
     },
     {
@@ -182,20 +208,25 @@
           "author": "Minsky, M. L.",
           "year": 1982,
           "title": "Why people think computers can't",
-          "source": "AI Magazine, 3(4), 3–15",
-          "note": ""
+          "source": "AI Magazine, 3(4), 3–15"
         },
         {
           "author": "Epstein, Z., et al.",
           "year": 2023,
           "title": "Art and the science of generative AI: A deeper dive",
-          "source": "",
-          "note": ""
+          "source": ""
         }
       ],
       "tool": "",
-      "project": { "url": "", "embed": false, "screenshots": [] },
-      "reflection": "",
+      "project": {
+        "url": "",
+        "embed": false,
+        "screenshots": []
+      },
+      "reflection": {
+        "es": "",
+        "en": ""
+      },
       "linkedinUrl": ""
     }
   ],
