@@ -122,6 +122,41 @@
     });
   }
 
+  function formatWeekRange(weekId) {
+    if (!state.data || !state.data.weeks) return "";
+    const weeks = state.data.weeks;
+    const idx = weeks.findIndex(function (x) { return x.id === weekId; });
+    if (idx === -1) return "";
+    const start = parseISODate(weeks[idx].date);
+    if (!start) return "";
+    let end = null;
+    if (idx < weeks.length - 1) end = parseISODate(weeks[idx + 1].date);
+    if (!end) {
+      end = new Date(start);
+      end.setDate(end.getDate() + 7);
+    }
+    const months = t("months.long");
+    if (!Array.isArray(months)) return "";
+    const sameMonth =
+      start.getMonth() === end.getMonth() &&
+      start.getFullYear() === end.getFullYear();
+    if (sameMonth) {
+      return t("date.range.sameMonth", {
+        startDay: start.getDate(),
+        endDay: end.getDate(),
+        month: months[start.getMonth()],
+        year: start.getFullYear()
+      });
+    }
+    return t("date.range.crossMonth", {
+      startDay: start.getDate(),
+      startMonth: months[start.getMonth()],
+      endDay: end.getDate(),
+      endMonth: months[end.getMonth()],
+      year: end.getFullYear()
+    });
+  }
+
   function getInitialLang() {
     try {
       const saved = localStorage.getItem(STORAGE_LANG);
@@ -244,7 +279,7 @@
         const topic = (w.topic && w.topic[state.lang]) || (w.topic && w.topic.es) || "";
         topicEl.textContent = topic;
       }
-      if (dateText) dateText.textContent = formatDateLong(w.date);
+      if (dateText) dateText.textContent = formatWeekRange(w.id);
       if (countdownEl) countdownEl.textContent = formatCountdown(w.date, featured.state);
       if (openBtn) {
         openBtn.style.display = "";
@@ -303,7 +338,7 @@
           <span class="week-info">
             <span class="week-title">${escapeHtml(w.title)}</span>
             <span class="week-topic">${escapeHtml(topic)}</span>
-            <span class="week-date">${escapeHtml(t("weeks.published", { date: formatDateLong(w.date) }))}</span>
+            <span class="week-date">${escapeHtml(t("weeks.published", { date: formatWeekRange(w.id) }))}</span>
           </span>
           <span class="week-meta">
             <span class="week-status">${escapeHtml(t("status." + (w.status || "pending")))}</span>

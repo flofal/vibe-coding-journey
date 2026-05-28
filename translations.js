@@ -52,7 +52,7 @@ const translations = {
       "Cada miércoles, una semana nueva. Hacé click en una tarjeta para ver lecturas, herramienta usada, proyecto y reflexión.",
     "weeks.week": "Semana",
     "weeks.expand.aria": "Expandir o colapsar la semana",
-    "weeks.published": "Publicación: {date}",
+    "weeks.published": "Semana del {date}",
 
     "status.pending": "Pendiente",
     "status.in_progress": "En curso",
@@ -118,7 +118,9 @@ const translations = {
     ],
     "weekdays.short": ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
     "date.format": "{day} de {month} de {year}",
-    "date.format.short": "{weekday} {day} {month}"
+    "date.format.short": "{weekday} {day} {month}",
+    "date.range.sameMonth": "{startDay} al {endDay} de {month}",
+    "date.range.crossMonth": "{startDay} de {startMonth} al {endDay} de {endMonth}"
   },
 
   en: {
@@ -170,7 +172,7 @@ const translations = {
       "A new week every Wednesday. Click a card to see readings, the tool used, the project, and the weekly reflection.",
     "weeks.week": "Week",
     "weeks.expand.aria": "Expand or collapse this week",
-    "weeks.published": "Published: {date}",
+    "weeks.published": "Week of {date}",
 
     "status.pending": "Pending",
     "status.in_progress": "In progress",
@@ -236,7 +238,9 @@ const translations = {
     ],
     "weekdays.short": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     "date.format": "{month} {day}, {year}",
-    "date.format.short": "{weekday} {month} {day}"
+    "date.format.short": "{weekday} {month} {day}",
+    "date.range.sameMonth": "{month} {startDay}–{endDay}",
+    "date.range.crossMonth": "{startMonth} {startDay} – {endMonth} {endDay}"
   }
 };
 
